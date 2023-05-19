@@ -28,6 +28,16 @@ public class Model {
         return false;
     }
 
+    public boolean register(String name,String userName,String password,int age,String address)
+    {
+        DataBase db = new DataBase();
+        if(db.register(name,userName,password,age,address))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public ArrayList<Trip> getUserTrips(){
         return new ArrayList<>();
     }

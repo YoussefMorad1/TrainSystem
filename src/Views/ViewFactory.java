@@ -17,11 +17,14 @@ public class ViewFactory {
             view = new UserHomeView();
         }
         else if(type == State.REGISTER){
-//            view = new RegisterView();
+            view = new RegisterView();
         }
         else if(type == State.DELETE_TKT){
             view = new CancelTicketView(controller);
         }
+//        else if(model.getCurrentState() == Controllers.ControllerTypes.BOOK_TKT){
+//            view = new BookTktView(model);
+//        }
         return view;
     }
 }

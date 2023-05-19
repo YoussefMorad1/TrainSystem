@@ -55,6 +55,19 @@ public class Controller  {
             view.showError("Wrong Credentials");
         }
     }
+    public void tryRegister(String name,String userName, String password, int age, String address){
+        if(name == null || userName == null || password == null || age == 0 || address == null){
+            view.showError("Please fill all the fields");
+            return;
+        }
+        if(model.register(name,userName, password, age, address)){
+            view = view.getNewView();
+            view.addEventListener(this);
+        }
+        else{
+            view.showError("Wrong Credentials");
+        }
+    }
     public void openRegister(){
         model.setState(State.REGISTER);
         view = view.getNewView();

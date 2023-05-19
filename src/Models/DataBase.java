@@ -38,6 +38,20 @@ public class DataBase {
         catch (Exception ignored){}
         return null;
     }
+    public boolean register(String name,String userName,String password,int age,String address)
+    {
+        String query = "insert into customers (name,userName,password,age,address) values ('%s','%s','%s',%d,'%s')".formatted(name,userName,password,age,address);
+        try {
+            Statement sttmnt = connection.createStatement();
+            sttmnt.executeUpdate(query);
+            return true;
+        }
+        catch (Exception ignored)
+        {
+            System.out.println(ignored.getMessage());
+        }
+        return false;
+    }
     public Connection getConnection() {
         return connection;
     }
