@@ -13,6 +13,19 @@
           <focusable value="true"/>
         </properties>
       </component>
+      <grid id="5bc20" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="5ffbc" class="javax.swing.JButton" binding="deleteButton">
+            <constraints border-constraint="West"/>
+            <properties>
+              <text value="Delete"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>

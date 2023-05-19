@@ -15,7 +15,7 @@ public class Controller  {
         this.view = view;
         this.view.addEventListener(this);
     }
-//    @Override
+    //    @Override
 //    public void actionPerformed(ActionEvent e) {
 //        Object source = e.getSource();
 //        if (source instanceof JButton) {
@@ -59,6 +59,9 @@ public class Controller  {
         model.setState(State.REGISTER);
         view = view.getNewView();
         view.addEventListener(this);
+    }
+    public void deleteTicket(String ticketId, String username){
+        ;
     }
     public Model getModel() {
         return model;
