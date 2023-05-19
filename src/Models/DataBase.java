@@ -52,6 +52,17 @@ public class DataBase {
         }
         return false;
     }
+    public void deleteTicket(int ticketId, String username){
+        String query = "delete from tickets where tripId = %d and customerUserName = '%s'".formatted(ticketId, username);
+        try {
+            Statement sttmnt = connection.createStatement();
+            sttmnt.executeUpdate(query);
+        }
+        catch (Exception ignored)
+        {
+            System.out.println(ignored.getMessage());
+        }
+    }
     public Connection getConnection() {
         return connection;
     }
