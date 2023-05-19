@@ -1,3 +1,8 @@
+package Controllers;
+
+import Models.Model;
+import Views.View;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,37 +20,43 @@ public class Controller implements ActionListener {
         Object source = e.getSource();
         if (source instanceof JButton) {
             JButton button = (JButton)e.getSource();
-            if(button.getText().equals("Login") && model.getCurrentState() == ControllerTypes.LOGIN){
-                tryLogin();
+            if(button.getText().equals("Login") && model.getCurrentState() == State.LOGIN){
+                //tryLogin(); // already handled from inside view
             }
-            else if(model.getCurrentState() == ControllerTypes.USER_HOME){
+            else if(model.getCurrentState() == State.USER_HOME){
                 if(button.getText().equals("Book a ticket")){
-                    changeFromHomeView(ControllerTypes.BOOK_TKT);
+                    changeFromHomeView(State.BOOK_TKT);
                 }
                 else if(button.getText().equals("Cancel a ticket")){
-                    changeFromHomeView(ControllerTypes.DELETE_TKT);
+                    changeFromHomeView(State.DELETE_TKT);
                 }
                 else if(button.getText().equals("Edit profile")){
-                    changeFromHomeView(ControllerTypes.EDIT_INFO);
+                    changeFromHomeView(State.EDIT_INFO);
                 }
             }
+            else if(model.getCurrentState() == State.BOOK_TKT){
 
+            }
         }
     }
-    private void changeFromHomeView(ControllerTypes type){
+    private void changeFromHomeView(State type){
         model.setState(type);
-        view.updateModel(model);
+//        view.updateModel(model);
         view = view.getNewView();
         view.addEventListener(this);
     }
-    private void tryLogin(){
-        if(view.isAdmin() != null && model.login(view.getUserName(), view.getPassword(), view.isAdmin())){
-            view.updateModel(model);
+    public void tryLogin(String userName, String password, Boolean isAdmin){
+        if(isAdmin != null && model.login(userName, password, isAdmin)){
+//            view.updateModel(model);
             view = view.getNewView();
             view.addEventListener(this);
         }
         else{
             view.showError("Wrong Credentials");
         }
+    }
+
+    public Model getModel() {
+        return model;
     }
 }

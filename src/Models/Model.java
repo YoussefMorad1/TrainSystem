@@ -1,40 +1,47 @@
-import java.lang.module.ModuleDescriptor;
+package Models;
+
+import Controllers.State;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Model {
-    private ControllerTypes currentState;
+    private State currentState;
     private String userName;
-    private String password;
     boolean isAdmin;
-    public Model(ControllerTypes type){
+
+    public Model(State type) {
         currentState = type;
     }
+
     public boolean login(String userName, String password, Boolean isAdmin) {
         DataBase db = new DataBase();
-        if(db.checkLoginCredentials(userName, password, isAdmin)){
+        if (db.checkLoginCredentials(userName, password, isAdmin)) {
             this.userName = userName;
             this.isAdmin = isAdmin;
-            this.password = password;
             if (isAdmin)
-                currentState = ControllerTypes.ADMIN_HOME;
+                currentState = State.ADMIN_HOME;
             else
-                currentState = ControllerTypes.USER_HOME;
+                currentState = State.USER_HOME;
             return true;
         }
         return false;
     }
-    public void setState(ControllerTypes type){
+
+    public ArrayList<Trip> getUserTrips(){
+        return new ArrayList<>();
+    }
+
+    public void setState(State type) {
         currentState = type;
     }
-    public ControllerTypes getCurrentState(){
+
+    public State getCurrentState() {
         return currentState;
     }
 
     public String getUserName() {
         return userName;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public boolean isAdmin() {

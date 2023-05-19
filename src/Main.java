@@ -1,9 +1,12 @@
-import java.sql.SQLException;
+import Controllers.Controller;
+import Controllers.State;
+import Models.*;
+import Views.*;
 
 public class Main {
     public static void main(String[] args)  {
-        Model model = new Model(ControllerTypes.LOGIN);
-        View view = new LoginView(model);
+        Model model = new Model(State.LOGIN);
+        View view = new LoginView();
         Controller controller = new Controller(model, view);
     }
 }

@@ -1,3 +1,5 @@
+package Models;
+
 import javax.management.Query;
 import java.sql.*;
 
@@ -24,6 +26,17 @@ public class DataBase {
         catch (Exception ignored){
         }
         return false;
+    }
+    public ResultSet getUserTrips(String username){
+        ResultSet ans;
+        String query = "select trips.* from trips, tickets where id = tripId and customerUserName = '%s'".formatted(username);
+        try {
+            Statement sttmnt = connection.createStatement();
+            ans = sttmnt.executeQuery(query);
+            return ans;
+        }
+        catch (Exception ignored){}
+        return null;
     }
     public Connection getConnection() {
         return connection;

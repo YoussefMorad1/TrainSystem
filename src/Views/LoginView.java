@@ -1,5 +1,9 @@
+package Views;
+
 import javax.swing.*;
-import java.awt.*;
+import Controllers.*;
+import Models.Model;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,14 +16,14 @@ public class LoginView extends View {
     private JButton loginButton;
     private JButton registerButton;
 
-    public LoginView(Model model) {
-        super(model);
+    public LoginView() {
         super.displayFrame(mainPanel);
     }
 
     public void addEventListener(Controller controller) {
-        loginButton.addActionListener(controller);
-        registerButton.addActionListener(controller);
+        super.addEventListener(controller);
+        loginButton.addActionListener(e -> controller.tryLogin(getUserName(), getPassword(), isAdmin()));
+//        registerButton.addActionListener(controller);
     }
 
     public Boolean isAdmin() {
