@@ -1,12 +1,18 @@
 import javax.swing.*;
 
 public class ViewFactory {
-    public static JFrame createView(ControllerTypes type, Controller controller) {
+    public static View createView(Model model) {
+        ControllerTypes type = model.getCurrentState();
+        View view = null;
         if (type == ControllerTypes.LOGIN) {
-            LoginView view = new LoginView();
-            view.addEventListener(controller);
-            return view;
+             view = new LoginView(model);
         }
-        return null;
+        if(model.getCurrentState() == ControllerTypes.USER_HOME){
+            view = new UserHomeView(model);
+        }
+//        else if(model.getCurrentState() == ControllerTypes.BOOK_TKT){
+//            view = new BookTktView(model);
+//        }
+        return view;
     }
 }

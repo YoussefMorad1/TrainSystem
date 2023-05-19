@@ -12,9 +12,9 @@ public class LoginView extends View {
     private JButton loginButton;
     private JButton registerButton;
 
-    public LoginView() {
-        super();
-        displayPanel(mainPanel);
+    public LoginView(Model model) {
+        super(model);
+        super.displayFrame(mainPanel);
     }
 
     public void addEventListener(Controller controller) {
@@ -23,6 +23,8 @@ public class LoginView extends View {
     }
 
     public Boolean isAdmin() {
+        if(!adminRadioButton.isSelected() && !userRadioButton.isSelected())
+            return null;
         return adminRadioButton.isSelected();
     }
 

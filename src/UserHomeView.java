@@ -6,9 +6,9 @@ public class UserHomeView extends View {
     private JButton bookATicketButton;
     private JButton cancelATicketButton;
     private JButton editProfileButton;
-    public UserHomeView(){
-        super();
-        displayPanel(mainPanel);
+    public UserHomeView(Model model){
+        super(model);
+        super.displayFrame(mainPanel);
     }
 
     public void addEventListener(Controller controller) {
