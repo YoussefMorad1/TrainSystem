@@ -8,7 +8,7 @@ public class DataBase {
     public DataBase() {
         try {
             connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
-                    "databaseName=Test;integratedSecurity=true;encrypt=false;");
+                    "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
         } catch (Exception ignored) {}
     }
     public boolean checkLoginCredentials(String UserName, String Pass, boolean isAdmin) {
@@ -17,7 +17,7 @@ public class DataBase {
         if(isAdmin)
             query = "select * from admins where userName = '%s' and [password] = '%s'".formatted(UserName, Pass);
         else
-            query = "select * from users where userName = '%s' and [password] = '%s'".formatted(UserName, Pass);
+            query = "select * from customers where userName = '%s' and [password] = '%s'".formatted(UserName, Pass);
         try {
             Statement st = connection.createStatement();
             ans = st.executeQuery(query);

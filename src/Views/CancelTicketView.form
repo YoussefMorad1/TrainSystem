@@ -9,7 +9,9 @@
     <children>
       <component id="3e6ac" class="javax.swing.JTable" binding="table1" custom-create="true" default-binding="true">
         <constraints border-constraint="Center"/>
-        <properties/>
+        <properties>
+          <focusable value="true"/>
+        </properties>
       </component>
     </children>
   </grid>

@@ -4,6 +4,9 @@ import javax.swing.*;
 import Models.Model;
 import Controllers.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class UserHomeView extends View {
     private JPanel mainPanel;
     private JButton bookATicketButton;
@@ -16,8 +19,8 @@ public class UserHomeView extends View {
 
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
-        bookATicketButton.addActionListener(controller);
-        cancelATicketButton.addActionListener(controller);
-        editProfileButton.addActionListener(controller);
+        bookATicketButton.addActionListener(e -> controller.changeFromHomeView(State.BOOK_TKT));
+        cancelATicketButton.addActionListener(e -> controller.changeFromHomeView(State.DELETE_TKT));
+        editProfileButton.addActionListener(e -> controller.changeFromHomeView(State.EDIT_INFO));
     }
 }

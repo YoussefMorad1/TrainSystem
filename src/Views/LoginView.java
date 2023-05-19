@@ -17,13 +17,14 @@ public class LoginView extends View {
     private JButton registerButton;
 
     public LoginView() {
+        super();
         super.displayFrame(mainPanel);
     }
 
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
         loginButton.addActionListener(e -> controller.tryLogin(getUserName(), getPassword(), isAdmin()));
-//        registerButton.addActionListener(controller);
+        registerButton.addActionListener(e -> controller.openRegister());
     }
 
     public Boolean isAdmin() {
