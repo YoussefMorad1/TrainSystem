@@ -62,7 +62,7 @@ public class Controller  {
         }
     }
     public void tryRegister(String name,String userName, String password, int age, String address){
-        if(name == null || userName == null || password == null || age == 0 || address == null){
+        if(name.isEmpty() || userName.isEmpty() || password.isEmpty() || age == 0 || address.isEmpty()){
             view.showError("Please fill all the fields");
             return;
         }
@@ -101,6 +101,27 @@ public class Controller  {
         }
 
     }
+    public void tryAddTrip(int id,String startLocation, String destination, int availableSeats, String startTime, String arrivalTime, int trainId){
+        if(id == 0||startLocation.isEmpty() || destination.isEmpty() || availableSeats == 0 || startTime.isEmpty() || arrivalTime.isEmpty()){
+            view.showError("Please fill all the fields");
+            return;
+        }
+        if(model.addTrip(startLocation, destination, availableSeats, startTime, arrivalTime, trainId)){
+            view = view.getNewView();
+            view.addEventListener(this);
+        }
+    }
+    public void tryUpdateTrip(int id,String startLocation, String destination, int availableSeats, String startTime, String arrivalTime, int trainId){
+        if(startLocation.isEmpty() || destination.isEmpty() || availableSeats == 0 || startTime.isEmpty() || arrivalTime.isEmpty() || trainId == 0){
+            view.showError("Please fill all the fields");
+            return;
+        }
+        if(model.updateTrip(startLocation, destination, availableSeats, startTime, arrivalTime, trainId)){
+            view = view.getNewView();
+            view.addEventListener(this);
+        }
+    }
+
     public void openRegister(){
         model.setState(State.REGISTER);
         view = view.getNewView();
@@ -122,11 +143,12 @@ public class Controller  {
         view = view.getNewView();
         view.addEventListener(this);
     }
-    public void deleteTicket(int ticketId, String username){
+    public void deleteTicket(String ticketId, String username){
         DataBase db = new DataBase();
         db.deleteTicket(ticketId, username);
         view = view.getNewView();
         view.addEventListener(this);
+
     }
     public void bookTkt(int tripId){
         DataBase db = new DataBase();

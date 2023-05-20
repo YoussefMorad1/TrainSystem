@@ -58,6 +58,25 @@ public class Model {
         }
         return false;
     }
+    public boolean addTrip(String startLocation,String destination,int availableSeats,String startTime,String arrivalTime,int trainId)
+    {
+        DataBase db = new DataBase();
+        if(db.addTrip(startLocation,destination,availableSeats,startTime,arrivalTime,trainId))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean updateTrip(String startLocation,String destination,int availableSeats,String startTime,String arrivalTime,int trainId)
+    {
+        DataBase db = new DataBase();
+        if(db.updateTrip(startLocation,destination,availableSeats,startTime,arrivalTime,trainId))
+        {
+            return true;
+        }
+        return false;
+    }
 
 
 

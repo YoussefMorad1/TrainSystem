@@ -1,7 +1,10 @@
 package Views;
 
 import Controllers.Controller;
+import Models.Model;
 import Controllers.State;
+
+import java.lang.module.Configuration;
 
 public class ViewFactory {
     public static View createView(Controller controller) {
@@ -35,9 +38,11 @@ public class ViewFactory {
         {
             view = new addTripView();
         }
-        else if(type == State.BOOK_TKT){
-            view = new BookTicketView();
-        }
+
+
+
+
+
 //        else if(model.getCurrentState() == Controllers.ControllerTypes.BOOK_TKT){
 //            view = new BookTktView(model);
 //        }

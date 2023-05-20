@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.updateTripView">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="303dc" class="javax.swing.JLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <text value="Enter trip id"/>
+        </properties>
+      </component>
+      <grid id="8244d" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="8f26f" class="javax.swing.JTextField" binding="tripId">
+            <constraints border-constraint="North"/>
+            <properties/>
+          </component>
+          <grid id="f449a" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="597f6" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="3bd2f" class="javax.swing.JLabel">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <text value="Edit starting location"/>
+                    </properties>
+                  </component>
+                  <grid id="27b58" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="e86ba" class="javax.swing.JTextField" binding="startLocation">
+                        <constraints border-constraint="North"/>
+                        <properties/>
+                      </component>
+                      <grid id="4cfe0" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="f9ba7" class="javax.swing.JLabel">
+                            <constraints border-constraint="North"/>
+                            <properties>
+                              <text value="Edit destination"/>
+                            </properties>
+                          </component>
+                          <grid id="27b97" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="44ad0" class="javax.swing.JTextField" binding="destinatoin">
+                                <constraints border-constraint="North"/>
+                                <properties/>
+                              </component>
+                              <grid id="871d4" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                                <border type="none"/>
+                                <children>
+                                  <component id="db84" class="javax.swing.JLabel">
+                                    <constraints border-constraint="North"/>
+                                    <properties>
+                                      <text value="Edit avaliable seats"/>
+                                    </properties>
+                                  </component>
+                                  <grid id="36902" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                    <constraints border-constraint="Center"/>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <component id="74f86" class="javax.swing.JTextField" binding="avaliableSeats">
+                                        <constraints border-constraint="North"/>
+                                        <properties/>
+                                      </component>
+                                      <grid id="7bc49" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                        <constraints border-constraint="Center"/>
+                                        <properties/>
+                                        <border type="none"/>
+                                        <children>
+                                          <component id="b2c28" class="javax.swing.JLabel">
+                                            <constraints border-constraint="North"/>
+                                            <properties>
+                                              <text value="Edit start time"/>
+                                            </properties>
+                                          </component>
+                                          <grid id="1898f" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                            <constraints border-constraint="Center"/>
+                                            <properties/>
+                                            <border type="none"/>
+                                            <children>
+                                              <component id="75010" class="javax.swing.JTextField" binding="startTime">
+                                                <constraints border-constraint="North"/>
+                                                <properties/>
+                                              </component>
+                                              <grid id="bf687" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                <constraints border-constraint="Center"/>
+                                                <properties/>
+                                                <border type="none"/>
+                                                <children>
+                                                  <component id="6bbea" class="javax.swing.JLabel">
+                                                    <constraints border-constraint="North"/>
+                                                    <properties>
+                                                      <text value="Edit Arrival time"/>
+                                                    </properties>
+                                                  </component>
+                                                  <grid id="f6f26" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                    <constraints border-constraint="Center"/>
+                                                    <properties/>
+                                                    <border type="none"/>
+                                                    <children>
+                                                      <component id="b2ca8" class="javax.swing.JTextField" binding="arrivalTime">
+                                                        <constraints border-constraint="North"/>
+                                                        <properties/>
+                                                      </component>
+                                                      <grid id="cd65e" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                        <constraints border-constraint="Center"/>
+                                                        <properties/>
+                                                        <border type="none"/>
+                                                        <children>
+                                                          <component id="d187a" class="javax.swing.JLabel">
+                                                            <constraints border-constraint="North"/>
+                                                            <properties>
+                                                              <text value="Edit Train id"/>
+                                                            </properties>
+                                                          </component>
+                                                          <grid id="117d4" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                            <constraints border-constraint="Center"/>
+                                                            <properties/>
+                                                            <border type="none"/>
+                                                            <children>
+                                                              <component id="dfdba" class="javax.swing.JTextField" binding="trainId">
+                                                                <constraints border-constraint="North"/>
+                                                                <properties/>
+                                                              </component>
+                                                              <grid id="3c5d" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                                <constraints border-constraint="Center"/>
+                                                                <properties/>
+                                                                <border type="none"/>
+                                                                <children>
+                                                                  <component id="6e1af" class="javax.swing.JButton" binding="updateButton">
+                                                                    <constraints border-constraint="North"/>
+                                                                    <properties>
+                                                                      <text value="Update"/>
+                                                                    </properties>
+                                                                  </component>
+                                                                </children>
+                                                              </grid>
+                                                            </children>
+                                                          </grid>
+                                                        </children>
+                                                      </grid>
+                                                    </children>
+                                                  </grid>
+                                                </children>
+                                              </grid>
+                                            </children>
+                                          </grid>
+                                        </children>
+                                      </grid>
+                                    </children>
+                                  </grid>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

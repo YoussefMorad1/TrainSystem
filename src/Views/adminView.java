@@ -22,5 +22,6 @@ public class adminView extends View{
         trainAddButoon.addActionListener(e -> controller.openAddTrain());
         trainUpdatebutton.addActionListener(e -> controller.openUpdateTrain());
         addATripButton.addActionListener(e -> controller.openAddTrip());
+        updateATripButton.addActionListener(e -> controller.openUpdateTrip());
     }
 }
