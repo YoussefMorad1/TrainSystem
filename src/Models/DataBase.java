@@ -10,8 +10,7 @@ public class DataBase {
     private Connection connection;
     public DataBase() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
-                    "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
+            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=TrainTicketReservationSystem;integratedSecurity=true;");
         } catch (Exception ignored) {}
     }
     public boolean checkLoginCredentials(String UserName, String Pass, boolean isAdmin) {
@@ -24,7 +23,7 @@ public class DataBase {
         try {
             Statement st = connection.createStatement();
             ans = st.executeQuery(query);
-            closeConnection();
+            //closeConnection();
             return ans.next();
         }
         catch (Exception ignored){
@@ -37,6 +36,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             ans = sttmnt.executeQuery(query);
+           // closeConnection();
             return ans;
         }
         catch (Exception ignored){}
@@ -48,7 +48,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+           // closeConnection();
             return true;
         }
         catch (Exception ignored)
@@ -63,7 +63,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+            //closeConnection();
             return true;
         }
         catch (Exception ignored)
@@ -79,7 +79,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+            //closeConnection();
             return true;
         }
         catch (Exception ignored)
@@ -94,7 +94,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+           // closeConnection();
             return true;
         }
         catch (Exception ignored)
@@ -110,7 +110,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+           // closeConnection();
             return true;
         }
         catch (Exception ignored)
@@ -148,6 +148,7 @@ public class DataBase {
         try{
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateAvailableSeatsQuery);
+            //closeConnection();
         }
         catch (Exception ignored){
             System.out.println(ignored);
@@ -159,7 +160,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+            //closeConnection();
         }
         catch (Exception ignored)
         {

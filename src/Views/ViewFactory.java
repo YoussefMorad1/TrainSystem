@@ -38,6 +38,10 @@ public class ViewFactory {
         {
             view = new addTripView();
         }
+        else if(type == State.BOOK_TKT)
+        {
+            view = new BookTicketView();
+        }
 
 
 
