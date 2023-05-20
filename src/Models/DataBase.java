@@ -2,6 +2,7 @@ package Models;
 
 import javax.management.Query;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DataBase {
@@ -107,8 +108,11 @@ public class DataBase {
             else if (classes.length == 3)
                 query += " and trains.class in (%d, %d, %d) ".formatted(classes[0], classes[1], classes[2]);
         }
-        if (date != null)
-            query += " and startTime > '%s' ".formatted(date);
+        if (date != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = dateFormat.format(date);
+            query += " and CONVERT(date, startTime) = '%s' ".formatted(formattedDate);
+        }
         try {
             Statement sttmnt = connection.createStatement();
             ans = sttmnt.executeQuery(query);

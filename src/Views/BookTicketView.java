@@ -6,6 +6,7 @@ import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.Vector;
 
