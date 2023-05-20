@@ -101,8 +101,8 @@ public class Controller  {
         }
 
     }
-    public void tryAddTrip(int id,String startLocation, String destination, int availableSeats, String startTime, String arrivalTime, int trainId){
-        if(id == 0||startLocation.isEmpty() || destination.isEmpty() || availableSeats == 0 || startTime.isEmpty() || arrivalTime.isEmpty()){
+    public void tryAddTrip(String startLocation, String destination, int availableSeats, String startTime, String arrivalTime, int trainId){
+        if(startLocation.isEmpty() || destination.isEmpty() || availableSeats == 0 || startTime.isEmpty() || arrivalTime.isEmpty()){
             view.showError("Please fill all the fields");
             return;
         }
@@ -140,6 +140,11 @@ public class Controller  {
     }
     public void openAddTrip(){
         model.setState(State.ADD_TRIP);
+        view = view.getNewView();
+        view.addEventListener(this);
+    }
+    public void openUpdateTrip(){
+        model.setState(State.UPDATE_TRIP);
         view = view.getNewView();
         view.addEventListener(this);
     }
