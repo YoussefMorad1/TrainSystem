@@ -94,17 +94,19 @@ public class DataBase {
     }
     public ResultSet searchTrips(String from, String to, int[] classes, Date date) {
         ResultSet ans;
-        String query = "select trips.* from trips, trains where trips.trainId = trains.id %s".formatted("");
-        if (from != null)
-            query += " and startLocation = '%s' ".formatted(from);
-        if (to != null)
-            query += " and destination = '%s' ".formatted(to);
-        if (classes.length == 1)
-            query += " and train.class in (%d) ".formatted(classes[0]);
-        else if (classes.length == 2)
-            query += " and train.class in (%d, %d) ".formatted(classes[0], classes[1]);
-        else if (classes.length == 3)
-            query += " and train.class in (%d, %d, %d) ".formatted(classes[0], classes[1], classes[2]);
+        String query = "select trips.*, trains.id from trips, trains where trips.trainId = trains.id";
+        if (from != null && !from.isEmpty())
+            query += " and startLocation like '%%%s%%' ".formatted(from);
+        if (to != null && !to.isEmpty())
+            query += " and destination like '%%%s%%' ".formatted(to);
+        if(classes != null) {
+            if (classes.length == 1)
+                query += " and trains.class in (%d) ".formatted(classes[0]);
+            else if (classes.length == 2)
+                query += " and trains.class in (%d, %d) ".formatted(classes[0], classes[1]);
+            else if (classes.length == 3)
+                query += " and trains.class in (%d, %d, %d) ".formatted(classes[0], classes[1], classes[2]);
+        }
         if (date != null)
             query += " and startTime > '%s' ".formatted(date);
         try {
