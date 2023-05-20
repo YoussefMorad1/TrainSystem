@@ -11,6 +11,8 @@
         <constraints border-constraint="Center"/>
         <properties>
           <focusable value="true"/>
+          <intercellSpacing width="1" height="1"/>
+          <minimumSize width="30" height="40"/>
         </properties>
       </component>
       <grid id="5bc20" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -19,9 +21,22 @@
         <border type="none"/>
         <children>
           <component id="5ffbc" class="javax.swing.JButton" binding="deleteButton">
-            <constraints border-constraint="West"/>
+            <constraints border-constraint="East"/>
             <properties>
               <text value="Delete"/>
+            </properties>
+          </component>
+          <component id="46aff" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+            <constraints border-constraint="West"/>
+            <properties>
+              <minimumSize width="109" height="30"/>
+              <preferredSize width="90" height="30"/>
+            </properties>
+          </component>
+          <component id="30f7a" class="javax.swing.JLabel">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <text value="Enter trip ID to delete"/>
             </properties>
           </component>
         </children>
