@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.trainUpdateView">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="d5059" class="javax.swing.JLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <text value="Enter train's id"/>
+        </properties>
+      </component>
+      <grid id="b35a1" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="fdb40" class="javax.swing.JTextField" binding="id">
+            <constraints border-constraint="North"/>
+            <properties/>
+          </component>
+          <grid id="16657" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="96f99" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <text value="Update the number of seats"/>
+                </properties>
+              </component>
+              <grid id="61544" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="8724c" class="javax.swing.JTextField" binding="newSeats">
+                    <constraints border-constraint="North"/>
+                    <properties/>
+                  </component>
+                  <grid id="3659e" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="b5e1b" class="javax.swing.JLabel">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <text value="Update the class"/>
+                        </properties>
+                      </component>
+                      <grid id="6cd77" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="65b32" class="javax.swing.JTextField" binding="newClass">
+                            <constraints border-constraint="North"/>
+                            <properties/>
+                          </component>
+                          <grid id="d23c" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="53431" class="javax.swing.JButton" binding="updateButton" default-binding="true">
+                                <constraints border-constraint="North"/>
+                                <properties>
+                                  <text value="Update"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
