@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.addTripView">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="7d6f6" class="javax.swing.JLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <text value="Starting location"/>
+        </properties>
+      </component>
+      <grid id="dd74d" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="e10da" class="javax.swing.JTextField" binding="startLocation">
+            <constraints border-constraint="North"/>
+            <properties/>
+          </component>
+          <grid id="8c1d0" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="27c4c" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <text value="Destination"/>
+                </properties>
+              </component>
+              <grid id="3273c" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="da6ae" class="javax.swing.JTextField" binding="destinatoin">
+                    <constraints border-constraint="North"/>
+                    <properties/>
+                  </component>
+                  <grid id="6050e" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="c40f5" class="javax.swing.JLabel">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <text value="Avaliable seats"/>
+                        </properties>
+                      </component>
+                      <grid id="74e2c" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="fbff8" class="javax.swing.JTextField" binding="avaliableSeats">
+                            <constraints border-constraint="North"/>
+                            <properties/>
+                          </component>
+                          <grid id="87675" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="837aa" class="javax.swing.JLabel">
+                                <constraints border-constraint="North"/>
+                                <properties>
+                                  <text value="Start time"/>
+                                </properties>
+                              </component>
+                              <grid id="cbcc9" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                                <border type="none"/>
+                                <children>
+                                  <component id="a18c7" class="javax.swing.JTextField" binding="startTime">
+                                    <constraints border-constraint="North"/>
+                                    <properties/>
+                                  </component>
+                                  <grid id="1135d" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                    <constraints border-constraint="Center"/>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <component id="20466" class="javax.swing.JLabel">
+                                        <constraints border-constraint="North"/>
+                                        <properties>
+                                          <text value="Arrival time"/>
+                                        </properties>
+                                      </component>
+                                      <grid id="81bb3" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                        <constraints border-constraint="Center"/>
+                                        <properties/>
+                                        <border type="none"/>
+                                        <children>
+                                          <component id="6b161" class="javax.swing.JTextField" binding="arrivalTime">
+                                            <constraints border-constraint="North"/>
+                                            <properties/>
+                                          </component>
+                                          <grid id="6777f" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                            <constraints border-constraint="Center"/>
+                                            <properties/>
+                                            <border type="none"/>
+                                            <children>
+                                              <component id="467bb" class="javax.swing.JLabel">
+                                                <constraints border-constraint="North"/>
+                                                <properties>
+                                                  <text value="Train id"/>
+                                                </properties>
+                                              </component>
+                                              <grid id="bd5e4" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                <constraints border-constraint="Center"/>
+                                                <properties/>
+                                                <border type="none"/>
+                                                <children>
+                                                  <component id="f08d5" class="javax.swing.JTextField" binding="trainId">
+                                                    <constraints border-constraint="North"/>
+                                                    <properties/>
+                                                  </component>
+                                                  <grid id="f033a" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                    <constraints border-constraint="Center"/>
+                                                    <properties/>
+                                                    <border type="none"/>
+                                                    <children>
+                                                      <grid id="90810" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                        <constraints border-constraint="Center"/>
+                                                        <properties/>
+                                                        <border type="none"/>
+                                                        <children>
+                                                          <component id="87626" class="javax.swing.JButton" binding="addButton" default-binding="true">
+                                                            <constraints border-constraint="North"/>
+                                                            <properties>
+                                                              <text value="Add"/>
+                                                            </properties>
+                                                          </component>
+                                                        </children>
+                                                      </grid>
+                                                    </children>
+                                                  </grid>
+                                                </children>
+                                              </grid>
+                                            </children>
+                                          </grid>
+                                        </children>
+                                      </grid>
+                                    </children>
+                                  </grid>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

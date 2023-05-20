@@ -1,8 +1,8 @@
 package Controllers;
 
-import Models.DataBase;
 import Models.Model;
 import Views.View;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -40,6 +40,9 @@ public class Controller  {
 //            }
 //        }
 //    }
+//    public void closeDatabaseConnection() {
+//        model.getDatabase().closeConnection();
+//    }
     public void changeFromHomeView(State type){
         model.setState(type);
 //        view.updateModel(model);
@@ -51,6 +54,7 @@ public class Controller  {
 //            view.updateModel(model);
             view = view.getNewView();
             view.addEventListener(this);
+           // closeDatabaseConnection();
         }
         else{
             view.showError("Wrong Credentials");
@@ -69,18 +73,62 @@ public class Controller  {
             view.showError("Wrong Credentials");
         }
     }
+    public void tryAddTrain(int seats, int classNumber){
+        if(seats == 0 || classNumber == 0){
+            view.showError("Please fill all the fields");
+            return;
+        }
+        else if(classNumber > 3 || classNumber < 1){
+            view.showError("Class number must be between 1 and 3");
+            return;
+        }
+        if(model.addTrain(seats, classNumber)){
+            view = view.getNewView();
+            view.addEventListener(this);
+        }
+
+    }
+
+    public void tryUpdateTrain(int id,int seats, int classNumber){
+        if(seats == 0 || classNumber == 0){
+            view.showError("Please fill all the fields");
+            return;
+        }
+        if(model.updateTrain(id,seats, classNumber)){
+            view = view.getNewView();
+            view.addEventListener(this);
+        }
+
+    }
     public void openRegister(){
         model.setState(State.REGISTER);
         view = view.getNewView();
         view.addEventListener(this);
     }
-    public void deleteTicket(int ticketId, String username){
-        DataBase db = new DataBase();
-        db.deleteTicket(ticketId, username);
+
+    public void openAddTrain(){
+        model.setState(State.ADD_TRAIN);
         view = view.getNewView();
         view.addEventListener(this);
+    }
+    public void openUpdateTrain(){
+        model.setState(State.UPDATE_TRAIN);
+        view = view.getNewView();
+        view.addEventListener(this);
+    }
+    public void openAddTrip(){
+        model.setState(State.ADD_TRIP);
+        view = view.getNewView();
+        view.addEventListener(this);
+    }
+    public void deleteTicket(String ticketId, String username){
+        ;
     }
     public Model getModel() {
         return model;
     }
+
+
+
+
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.addTrainView">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="5050c" class="javax.swing.JLabel">
+        <constraints border-constraint="North"/>
+        <properties>
+          <text value="Number of seats"/>
+        </properties>
+      </component>
+      <grid id="79fa4" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="787b3" class="javax.swing.JTextField" binding="seatsNumber">
+            <constraints border-constraint="North"/>
+            <properties/>
+          </component>
+          <grid id="473cb" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="fc3f9" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <text value="Class number"/>
+                </properties>
+              </component>
+              <grid id="b9cca" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="76779" class="javax.swing.JTextField" binding="classNumber">
+                    <constraints border-constraint="North"/>
+                    <properties/>
+                  </component>
+                  <grid id="2164e" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="93046" class="javax.swing.JButton" binding="addTrainButton">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <text value="Add"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

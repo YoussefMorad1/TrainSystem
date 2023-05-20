@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.adminView">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="96a0e" class="javax.swing.JButton" binding="trainAddButoon">
+        <constraints border-constraint="North"/>
+        <properties>
+          <text value="Add a train"/>
+        </properties>
+      </component>
+      <grid id="90919" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="5914f" class="javax.swing.JButton" binding="trainUpdatebutton">
+            <constraints border-constraint="North"/>
+            <properties>
+              <text value="Update a train's details"/>
+            </properties>
+          </component>
+          <grid id="af80b" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="10441" class="javax.swing.JButton" binding="addATripButton" default-binding="true">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <text value="Add a trip"/>
+                </properties>
+              </component>
+              <grid id="4116c" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="46a29" class="javax.swing.JButton" binding="updateATripButton" default-binding="true">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <text value="Update a trip"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

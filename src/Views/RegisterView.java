@@ -17,12 +17,12 @@ public class RegisterView extends View {
     public RegisterView() {
         super();
         super.displayFrame(panel1);
-
     }
 
     @Override
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
         registerButton.addActionListener(e -> controller.tryRegister(nameField.getText(),userNameField.getText(), new String(passwordField.getPassword()), Integer.parseInt(ageField.getText()), adressField.getText()));
+
     }
 }
