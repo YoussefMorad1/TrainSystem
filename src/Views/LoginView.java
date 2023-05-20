@@ -25,6 +25,7 @@ public class LoginView extends View {
         super.addEventListener(controller);
         loginButton.addActionListener(e -> controller.tryLogin(getUserName(), getPassword(), isAdmin()));
         registerButton.addActionListener(e -> controller.openRegister());
+
     }
 
     public Boolean isAdmin() {

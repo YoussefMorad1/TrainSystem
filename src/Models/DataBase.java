@@ -7,8 +7,7 @@ public class DataBase {
     private Connection connection;
     public DataBase() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
-                    "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
+            connection = DriverManager.getConnection("jdbc:sqlite:src\\Models\\trainSystem.db");
         } catch (Exception ignored) {}
     }
     public boolean checkLoginCredentials(String UserName, String Pass, boolean isAdmin) {
@@ -21,6 +20,7 @@ public class DataBase {
         try {
             Statement st = connection.createStatement();
             ans = st.executeQuery(query);
+            closeConnection();
             return ans.next();
         }
         catch (Exception ignored){
@@ -44,6 +44,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
+            closeConnection();
             return true;
         }
         catch (Exception ignored)
@@ -52,18 +53,48 @@ public class DataBase {
         }
         return false;
     }
-    public void deleteTicket(int ticketId, String username){
-        String query = "delete from tickets where tripId = %d and customerUserName = '%s'".formatted(ticketId, username);
+    public boolean addTrain(int seats,int classNumber)
+    {
+        String query = "insert into trains (seats,class) values (%d,%d)".formatted(seats,classNumber);
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
+            closeConnection();
+            return true;
         }
         catch (Exception ignored)
         {
             System.out.println(ignored.getMessage());
         }
+        return false;
+    }
+
+    public boolean updateTrain(int id,int seats,int classNumber)
+    {
+        String query = "update trains set seats = %d , class = %d where id = %d".formatted(seats,classNumber,id);
+        try {
+            Statement sttmnt = connection.createStatement();
+            sttmnt.executeUpdate(query);
+            closeConnection();
+            return true;
+        }
+        catch (Exception ignored)
+        {
+            System.out.println(ignored.getMessage());
+        }
+        return false;
     }
     public Connection getConnection() {
         return connection;
+    }
+    public void closeConnection() {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            // Handle any errors that occur while closing the connection
+            e.printStackTrace();
+        }
     }
 }

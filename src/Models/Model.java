@@ -9,6 +9,7 @@ public class Model {
     private State currentState;
     private String userName;
     boolean isAdmin;
+    private DataBase database;
 
     public Model(State type) {
         currentState = type;
@@ -38,6 +39,31 @@ public class Model {
         return false;
     }
 
+    public boolean addTrain(int seats,int classNumber)
+    {
+        DataBase db = new DataBase();
+        if(db.addTrain(seats,classNumber))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean updateTrain(int id,int seats,int classNumber)
+    {
+        DataBase db = new DataBase();
+        if(db.updateTrain(id,seats,classNumber))
+        {
+            return true;
+        }
+        return false;
+    }
+
+
+
+    public DataBase getDatabase() {
+        return database;
+    }
     public ArrayList<Trip> getUserTrips(){
         return new ArrayList<>();
     }
