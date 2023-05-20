@@ -6,7 +6,6 @@ import Models.DataBase;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class CancelTicketView extends View {
@@ -57,9 +56,15 @@ public class CancelTicketView extends View {
 
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
-        deleteButton.addActionListener(e -> controller.deleteTicket(
-                        Integer.parseInt(textField1.getText()), controller.getModel().getUserName()
-                )
+        deleteButton.addActionListener(e -> {
+                if (!textField1.getText().chars().allMatch(Character::isDigit)) {
+                    this.showError("Wrong Trip Id");
+                    return;
+                }
+                controller.deleteTicket(
+                                Integer.parseInt(textField1.getText()), controller.getModel().getUserName()
+                        );
+            }
         );
     }
 }
