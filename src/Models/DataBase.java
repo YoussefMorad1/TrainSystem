@@ -153,6 +153,48 @@ public class DataBase {
             System.out.println(ignored);
         }
     }
+    public void deleteTicket(int ticketId, String username)
+    {
+        String query = "delete from tickets where id = %d and customerUserName = '%s'".formatted(ticketId,username);
+        try {
+            Statement sttmnt = connection.createStatement();
+            sttmnt.executeUpdate(query);
+            closeConnection();
+        }
+        catch (Exception ignored)
+        {
+            System.out.println(ignored.getMessage());
+        }
+    }
+    public ResultSet searchTrips(String from, String to, int[] classes, Date date) {
+        ResultSet ans;
+        String query = "select trips.*, trains.id from trips, trains where trips.trainId = trains.id and available = 1 ";
+        if (from != null && !from.isEmpty())
+            query += " and startLocation like '%%%s%%' ".formatted(from);
+        if (to != null && !to.isEmpty())
+            query += " and destination like '%%%s%%' ".formatted(to);
+        if (classes != null) {
+            if (classes.length == 1)
+                query += " and trains.class in (%d) ".formatted(classes[0]);
+            else if (classes.length == 2)
+                query += " and trains.class in (%d, %d) ".formatted(classes[0], classes[1]);
+            else if (classes.length == 3)
+                query += " and trains.class in (%d, %d, %d) ".formatted(classes[0], classes[1], classes[2]);
+        }
+        if (date != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = dateFormat.format(date);
+            query += " and CONVERT(date, startTime) = '%s' ".formatted(formattedDate);
+        }
+        try {
+            Statement statement = connection.createStatement();
+            ans = statement.executeQuery(query);
+            return ans;
+        } catch (Exception ignored) {
+            System.out.println(ignored.getMessage());
+        }
+        return null;
+    }
 //    public Connection getConnection() {
 //        return connection;
 //    }
