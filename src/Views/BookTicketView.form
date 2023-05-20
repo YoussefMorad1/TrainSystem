@@ -168,7 +168,7 @@
                                 <properties/>
                                 <border type="none"/>
                                 <children>
-                                  <component id="bdbc1" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+                                  <component id="bdbc1" class="javax.swing.JTextField" binding="idField">
                                     <constraints border-constraint="West"/>
                                     <properties>
                                       <preferredSize width="109" height="30"/>

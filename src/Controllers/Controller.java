@@ -128,6 +128,12 @@ public class Controller  {
         view = view.getNewView();
         view.addEventListener(this);
     }
+    public void bookTkt(int tripId){
+        DataBase db = new DataBase();
+        db.bookTkt(getModel().getUserName(), tripId);
+        view = view.getNewView();
+        view.addEventListener(this);
+    }
     public Model getModel() {
         return model;
     }

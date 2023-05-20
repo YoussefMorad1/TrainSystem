@@ -6,26 +6,26 @@ import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.sql.Date;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class BookTicketView extends View {
     private JPanel panel1;
     private JTextField fromField;
     private JTextField toField;
-//    private String[] data = {"one", "two", "three", "four"};
     private JList list;
-//    private JList list;
     private JXDatePicker startDate;
     private JTable table1;
     DefaultTableModel tableModel;
     private JButton searchButton;
-    private JTextField textField3;
+    ArrayList<Integer> tripsIds;
+    private JTextField idField;
     private JButton bookButton;
 
     BookTicketView() {
         super();
+        tripsIds = new ArrayList<>();
         createUIComponents();
         this.displayFrame(panel1);
     }
@@ -33,7 +33,13 @@ public class BookTicketView extends View {
     public void addEventListener(Controller controller){
         super.addEventListener(controller);
         searchButton.addActionListener(e -> displayTrips());
-//        bookButton.addActionListener(e -> );
+        bookButton.addActionListener(e -> {
+            if (!tripsIds.contains(Integer.parseInt(idField.getText())) || !idField.getText().chars().allMatch(Character::isDigit)) {
+                showError("Wrong Trip ID");
+                return;
+            }
+            controller.bookTkt(Integer.parseInt(idField.getText()));
+        });
     }
     private void displayTrips() {
         DataBase db = new DataBase();
@@ -51,6 +57,9 @@ public class BookTicketView extends View {
         showIntoTable(trips);
     }
     private void showIntoTable(ResultSet trips) {
+        if(tripsIds != null && !tripsIds.isEmpty()){
+            tripsIds.clear();
+        }
         if (tableModel == null) {
             tableModel = new DefaultTableModel() {
                 @Override
@@ -63,13 +72,15 @@ public class BookTicketView extends View {
             tableModel.setRowCount(0);
             tableModel.setColumnCount(0);
         }
-        String[] columns = {"id", "startLocation", "destination", "availableSeats", "startTime", "arriveTime", "trainId", "class"};
+        String[] columns = {"id", "startLocation", "destination",
+                "availableSeats", "startTime", "arriveTime", "trainId", "class"};
         for (String str : columns) {
             tableModel.addColumn(str);
         }
         tableModel.addRow(columns);
         try {
             while (trips.next()) {
+                tripsIds.add(trips.getInt(1));
                 Vector<String> arr = new Vector<>();
                 for (int i = 1; i <= 8; i++) {
                     if (i == 7) continue; // if 'available' column continue
