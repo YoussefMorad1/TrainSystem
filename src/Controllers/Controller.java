@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.DataBase;
 import Models.Model;
 import Views.View;
 
@@ -121,8 +122,11 @@ public class Controller  {
         view = view.getNewView();
         view.addEventListener(this);
     }
-    public void deleteTicket(String ticketId, String username){
-        ;
+    public void deleteTicket(int ticketId, String username){
+        DataBase db = new DataBase();
+        db.deleteTicket(ticketId, username);
+        view = view.getNewView();
+        view.addEventListener(this);
     }
     public Model getModel() {
         return model;

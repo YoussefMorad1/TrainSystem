@@ -6,16 +6,14 @@ import org.jdesktop.swingx.JXDatePicker;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Vector;
 
 public class BookTicketView extends View {
     private JPanel panel1;
     private JTextField fromField;
     private JTextField toField;
 //    private String[] data = {"one", "two", "three", "four"};
-    private JList classList;
-//    private JList classList;
+    private JList list;
+//    private JList list;
     private JXDatePicker startDate;
     private JTable table1;
     DefaultTableModel tableModel;
@@ -25,24 +23,29 @@ public class BookTicketView extends View {
 
     BookTicketView() {
         super();
-        createUIComponents();
-//        displayTrips();
+//        createUIComponents();
+        displayTrips();
         this.displayFrame(panel1);
     }
 
     //    public void addEventListener(){
 //    }
-//    public void displayTrips() {
-//        DataBase db = new DataBase();
-//        int size = classList.getSelectedIndices().length;
-//        int[] selectedIndices = classList.getSelectedIndices();
-//        for (int i = 0; i < size; i++) {
-//            selectedIndices[i]++;
-//        }
-//        ResultSet trips = db.searchTrips(fromField.getText(), toField.getText(), selectedIndices, startDate.getDate());
-//        showIntoTable(trips);
-//    }
+    public void displayTrips() {
+        DataBase db = new DataBase();
+        int size = list.getSelectedIndices().length;
+        int[] selectedIndices = list.getSelectedIndices();
+        for (int i = 0; i < size; i++) {
+            selectedIndices[i]++;
+        }
+        ResultSet trips = db.searchTrips(fromField.getText(), toField.getText(), selectedIndices, startDate.getDate());
+        showIntoTable(trips);
+    }
 
+    private void createUIComponents() {
+        DataBase db = new DataBase();
+        ResultSet trips = db.searchTrips(fromField.getText(), toField.getText(), null, startDate.getDate());
+        showIntoTable(trips);
+    }
     private void showIntoTable(ResultSet trips) {
         tableModel = new DefaultTableModel() {
             @Override
@@ -70,14 +73,4 @@ public class BookTicketView extends View {
         table1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
-    private void createUIComponents() {
-        DataBase db = new DataBase();
-        int size = classList.getSelectedIndices().length;
-        int[] selectedIndices = classList.getSelectedIndices();
-        for (int i = 0; i < size; i++) {
-            selectedIndices[i]++;
-        }
-        ResultSet trips = db.searchTrips(fromField.getText(), toField.getText(), selectedIndices, startDate.getDate());
-        showIntoTable(trips);
-    }
 }
