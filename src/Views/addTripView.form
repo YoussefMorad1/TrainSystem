@@ -50,7 +50,7 @@
                       <component id="c40f5" class="javax.swing.JLabel">
                         <constraints border-constraint="North"/>
                         <properties>
-                          <text value="Avaliable seats"/>
+                          <text value="Price (currently unavailable)"/>
                         </properties>
                       </component>
                       <grid id="74e2c" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -78,10 +78,6 @@
                                 <properties/>
                                 <border type="none"/>
                                 <children>
-                                  <component id="a18c7" class="javax.swing.JTextField" binding="startTime">
-                                    <constraints border-constraint="North"/>
-                                    <properties/>
-                                  </component>
                                   <grid id="1135d" layout-manager="BorderLayout" hgap="0" vgap="0">
                                     <constraints border-constraint="Center"/>
                                     <properties/>
@@ -98,10 +94,6 @@
                                         <properties/>
                                         <border type="none"/>
                                         <children>
-                                          <component id="6b161" class="javax.swing.JTextField" binding="arrivalTime">
-                                            <constraints border-constraint="North"/>
-                                            <properties/>
-                                          </component>
                                           <grid id="6777f" layout-manager="BorderLayout" hgap="0" vgap="0">
                                             <constraints border-constraint="Center"/>
                                             <properties/>
@@ -138,6 +130,19 @@
                                                               <text value="Add"/>
                                                             </properties>
                                                           </component>
+                                                          <grid id="9ea5e" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                                            <constraints border-constraint="South"/>
+                                                            <properties/>
+                                                            <border type="none"/>
+                                                            <children>
+                                                              <component id="ae6d3" class="javax.swing.JButton" binding="backButton" default-binding="true">
+                                                                <constraints border-constraint="West"/>
+                                                                <properties>
+                                                                  <text value="Back"/>
+                                                                </properties>
+                                                              </component>
+                                                            </children>
+                                                          </grid>
                                                         </children>
                                                       </grid>
                                                     </children>
@@ -146,10 +151,18 @@
                                               </grid>
                                             </children>
                                           </grid>
+                                          <component id="5c970" class="com.github.lgooddatepicker.components.DateTimePicker" binding="arrivalTime">
+                                            <constraints border-constraint="North"/>
+                                            <properties/>
+                                          </component>
                                         </children>
                                       </grid>
                                     </children>
                                   </grid>
+                                  <component id="af8cc" class="com.github.lgooddatepicker.components.DateTimePicker" binding="startTime">
+                                    <constraints border-constraint="North"/>
+                                    <properties/>
+                                  </component>
                                 </children>
                               </grid>
                             </children>

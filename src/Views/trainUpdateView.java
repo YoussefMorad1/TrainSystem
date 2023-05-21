@@ -8,6 +8,7 @@ public class trainUpdateView extends View {
     private JTextField newSeats;
     private JTextField newClass;
     private JButton updateButton;
+    private JButton backButton;
 
     public trainUpdateView() {
         super();
@@ -17,5 +18,6 @@ public class trainUpdateView extends View {
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
         updateButton.addActionListener(e -> controller.tryUpdateTrain(Integer.parseInt(id.getText()), Integer.parseInt(newSeats.getText()),Integer.parseInt(newClass.getText())));
+        backButton.addActionListener(e->controller.goBack());
     }
 }

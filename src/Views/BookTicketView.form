@@ -191,6 +191,19 @@
                               </grid>
                             </children>
                           </grid>
+                          <grid id="189b2" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="South"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="5c29a" class="javax.swing.JButton" binding="backButton" default-binding="true">
+                                <constraints border-constraint="West"/>
+                                <properties>
+                                  <text value="Back"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
                         </children>
                       </grid>
                     </children>

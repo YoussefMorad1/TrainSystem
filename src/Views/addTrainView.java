@@ -12,6 +12,7 @@ public class addTrainView extends View{
     private JButton addTrainButton;
     private JTextField seatsNumber;
     private JTextField classNumber;
+    private JButton backButton;
 
 
     public addTrainView() {
@@ -23,6 +24,7 @@ public class addTrainView extends View{
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
         addTrainButton.addActionListener(e -> controller.tryAddTrain(Integer.parseInt(seatsNumber.getText()),Integer.parseInt(classNumber.getText())));
+        backButton.addActionListener(e -> controller.goBack());
     }
 
 }

@@ -42,14 +42,9 @@ public class ViewFactory {
         {
             view = new BookTicketView();
         }
-
-
-
-
-
-//        else if(model.getCurrentState() == Controllers.ControllerTypes.BOOK_TKT){
-//            view = new BookTktView(model);
-//        }
+        else if(type == State.UPDATE_TRIP){
+            view = new updateTripView();
+        }
         return view;
     }
 }

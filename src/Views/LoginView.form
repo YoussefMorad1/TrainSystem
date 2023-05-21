@@ -12,56 +12,86 @@
         <properties>
           <enabled value="true"/>
         </properties>
-        <border type="none"/>
+        <border type="empty">
+          <size top="0" left="0" bottom="0" right="5"/>
+        </border>
         <children>
           <grid id="ce9cc" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints border-constraint="North"/>
             <properties/>
-            <border type="none"/>
+            <border type="empty">
+              <font/>
+              <size top="0" left="5" bottom="5" right="0"/>
+            </border>
             <children>
               <component id="ad2c6" class="javax.swing.JLabel">
                 <constraints border-constraint="North"/>
                 <properties>
+                  <alignmentY value="0.5"/>
+                  <autoscrolls value="false"/>
+                  <doubleBuffered value="false"/>
+                  <font size="14"/>
+                  <opaque value="false"/>
+                  <preferredSize width="58" height="16"/>
                   <text value="User Name"/>
                 </properties>
               </component>
-              <component id="52835" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+              <grid id="c03e" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints border-constraint="South"/>
                 <properties/>
-              </component>
+                <border type="empty">
+                  <size top="3" left="0" bottom="0" right="0"/>
+                </border>
+                <children>
+                  <component id="140ac" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
           <grid id="b6bde" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints border-constraint="Center"/>
             <properties/>
-            <border type="none"/>
+            <border type="empty">
+              <size top="0" left="5" bottom="0" right="0"/>
+            </border>
             <children>
               <component id="615eb" class="javax.swing.JLabel">
                 <constraints border-constraint="North"/>
                 <properties>
+                  <font size="14"/>
                   <text value="Password"/>
                 </properties>
               </component>
               <grid id="a4d01" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints border-constraint="Center"/>
                 <properties/>
-                <border type="none"/>
+                <border type="empty">
+                  <size top="3" left="0" bottom="0" right="0"/>
+                </border>
                 <children>
                   <grid id="b7830" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
                     <properties/>
-                    <border type="none"/>
+                    <border type="empty">
+                      <size top="5" left="0" bottom="0" right="0"/>
+                    </border>
                     <children>
                       <component id="217d1" class="javax.swing.JLabel">
                         <constraints border-constraint="North"/>
                         <properties>
+                          <font size="14"/>
                           <text value="Login As: "/>
                         </properties>
                       </component>
                       <grid id="19964" layout-manager="BorderLayout" hgap="0" vgap="0">
                         <constraints border-constraint="Center"/>
                         <properties/>
-                        <border type="none"/>
+                        <border type="empty">
+                          <size top="3" left="0" bottom="0" right="0"/>
+                        </border>
                         <children>
                           <grid id="fbf64" layout-manager="BorderLayout" hgap="0" vgap="0">
                             <constraints border-constraint="North"/>
@@ -71,13 +101,19 @@
                               <component id="27453" class="javax.swing.JRadioButton" binding="adminRadioButton" default-binding="true">
                                 <constraints border-constraint="West"/>
                                 <properties>
+                                  <borderPainted value="false"/>
+                                  <contentAreaFilled value="false"/>
+                                  <font size="14"/>
                                   <text value="Admin"/>
                                 </properties>
                               </component>
                               <component id="5296d" class="javax.swing.JRadioButton" binding="userRadioButton" default-binding="true">
                                 <constraints border-constraint="Center"/>
                                 <properties>
+                                  <contentAreaFilled value="true"/>
                                   <enabled value="true"/>
+                                  <font size="14"/>
+                                  <margin top="2" left="10" bottom="2" right="2"/>
                                   <text value="User"/>
                                 </properties>
                               </component>
@@ -86,11 +122,14 @@
                           <grid id="7db49" layout-manager="BorderLayout" hgap="0" vgap="0">
                             <constraints border-constraint="Center"/>
                             <properties/>
-                            <border type="none"/>
+                            <border type="empty">
+                              <size top="5" left="0" bottom="0" right="0"/>
+                            </border>
                             <children>
                               <component id="15618" class="javax.swing.JButton" binding="loginButton" default-binding="true">
                                 <constraints border-constraint="North"/>
                                 <properties>
+                                  <background color="-9651456"/>
                                   <hideActionText value="false"/>
                                   <name value=""/>
                                   <text value="Login"/>
@@ -104,12 +143,33 @@
                                   <grid id="c6d06" layout-manager="BorderLayout" hgap="0" vgap="0">
                                     <constraints border-constraint="North"/>
                                     <properties/>
-                                    <border type="none"/>
+                                    <border type="empty">
+                                      <size top="5" left="0" bottom="0" right="0"/>
+                                    </border>
                                     <children>
                                       <component id="699ba" class="javax.swing.JButton" binding="registerButton" default-binding="true">
                                         <constraints border-constraint="East"/>
                                         <properties>
+                                          <background color="-65792"/>
                                           <text value="Register"/>
+                                        </properties>
+                                      </component>
+                                    </children>
+                                  </grid>
+                                  <grid id="20ab2" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                    <constraints border-constraint="South"/>
+                                    <properties/>
+                                    <border type="empty">
+                                      <size top="0" left="0" bottom="5" right="0"/>
+                                    </border>
+                                    <children>
+                                      <component id="81992" class="javax.swing.JButton" binding="exitButton" default-binding="true">
+                                        <constraints border-constraint="West"/>
+                                        <properties>
+                                          <background color="-65536"/>
+                                          <foreground color="-1"/>
+                                          <preferredSize width="78" height="30"/>
+                                          <text value="Exit"/>
                                         </properties>
                                       </component>
                                     </children>
@@ -135,8 +195,16 @@
       <component id="4b5ef" class="javax.swing.JLabel">
         <constraints border-constraint="North"/>
         <properties>
+          <font name="Courier New" size="24" style="1"/>
+          <foreground color="-65536"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="Welcome to Trainy App!"/>
+          <verticalAlignment value="0"/>
         </properties>
+        <clientProperties>
+          <html.disable class="java.lang.Boolean" value="false"/>
+        </clientProperties>
       </component>
     </children>
   </grid>

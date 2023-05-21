@@ -1,17 +1,16 @@
 package Views;
 
 import javax.swing.*;
-import Models.Model;
-import Controllers.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import Controllers.*;
 
 public class UserHomeView extends View {
     private JPanel mainPanel;
     private JButton bookATicketButton;
     private JButton cancelATicketButton;
     private JButton editProfileButton;
+    private JButton backButton;
+
     public UserHomeView(){
         super();
         super.displayFrame(mainPanel);
@@ -22,5 +21,6 @@ public class UserHomeView extends View {
         bookATicketButton.addActionListener(e -> controller.changeFromHomeView(State.BOOK_TKT));
         cancelATicketButton.addActionListener(e -> controller.changeFromHomeView(State.DELETE_TKT));
         editProfileButton.addActionListener(e -> controller.changeFromHomeView(State.EDIT_INFO));
+        backButton.addActionListener(e->controller.goBack());
     }
 }

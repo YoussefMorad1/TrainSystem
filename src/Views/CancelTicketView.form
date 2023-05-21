@@ -7,14 +7,6 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="3e6ac" class="javax.swing.JTable" binding="table1" custom-create="true" default-binding="true">
-        <constraints border-constraint="Center"/>
-        <properties>
-          <focusable value="true"/>
-          <intercellSpacing width="1" height="1"/>
-          <minimumSize width="30" height="40"/>
-        </properties>
-      </component>
       <grid id="5bc20" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints border-constraint="South"/>
         <properties/>
@@ -39,6 +31,30 @@
               <text value="Enter trip ID to delete"/>
             </properties>
           </component>
+        </children>
+      </grid>
+      <grid id="b5101" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="44353" class="javax.swing.JTable" binding="table1" custom-create="true" default-binding="true">
+            <constraints border-constraint="Center"/>
+            <properties/>
+          </component>
+          <grid id="4480c" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="South"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="1c635" class="javax.swing.JButton" binding="backButton" default-binding="true">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <text value="Back"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
         </children>
       </grid>
     </children>

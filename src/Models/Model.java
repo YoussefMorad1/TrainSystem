@@ -3,14 +3,13 @@ package Models;
 import Controllers.State;
 
 import java.lang.reflect.Array;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Model {
     private State currentState;
     private String userName;
-    boolean isAdmin;
-    private DataBase database;
-
+    Boolean isAdmin;
     public Model(State type) {
         currentState = type;
     }
@@ -29,61 +28,51 @@ public class Model {
         return false;
     }
 
-    public boolean register(String name,String userName,String password,int age,String address)
-    {
+    public boolean register(String name, String userName, String password, int age, String address) {
         DataBase db = new DataBase();
-        if(db.register(name,userName,password,age,address))
-        {
+        if (db.register(name, userName, password, age, address)) {
             return true;
         }
         return false;
     }
 
-    public boolean addTrain(int seats,int classNumber)
-    {
+    public boolean addTrain(int seats, int classNumber) {
         DataBase db = new DataBase();
-        if(db.addTrain(seats,classNumber))
-        {
+        if (db.addTrain(seats, classNumber)) {
             return true;
         }
         return false;
     }
 
-    public boolean updateTrain(int id,int seats,int classNumber)
-    {
+    public boolean updateTrain(int id, int seats, int classNumber) {
         DataBase db = new DataBase();
-        if(db.updateTrain(id,seats,classNumber))
-        {
-            return true;
-        }
-        return false;
-    }
-    public boolean addTrip(String startLocation,String destination,int availableSeats,String startTime,String arrivalTime,int trainId)
-    {
-        DataBase db = new DataBase();
-        if(db.addTrip(startLocation,destination,availableSeats,startTime,arrivalTime,trainId))
-        {
+        if (db.updateTrain(id, seats, classNumber)) {
             return true;
         }
         return false;
     }
 
-    public boolean updateTrip(String startLocation,String destination,int availableSeats,String startTime,String arrivalTime,int trainId)
-    {
+    public boolean addTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {
         DataBase db = new DataBase();
-        if(db.updateTrip(startLocation,destination,availableSeats,startTime,arrivalTime,trainId))
-        {
+        if (db.addTrip(startLocation, destination, startTime, arrivalTime, trainId)) {
             return true;
         }
         return false;
     }
 
-
-
-    public DataBase getDatabase() {
-        return database;
+    public boolean updateTrip(int tripId, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {
+        DataBase db = new DataBase();
+        if (db.updateTrip(tripId, startLocation, destination, startTime, arrivalTime, trainId)) {
+            return true;
+        }
+        return false;
     }
-    public ArrayList<Trip> getUserTrips(){
+    public void logout(){
+        userName = null;
+        isAdmin = null;
+    }
+
+    public ArrayList<Trip> getUserTrips() {
         return new ArrayList<>();
     }
 

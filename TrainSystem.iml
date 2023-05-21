@@ -19,5 +19,7 @@
     </orderEntry>
     <orderEntry type="library" name="swing-components-5.5" level="project" />
     <orderEntry type="library" name="swingx-all-1.6.5-1" level="project" />
+    <orderEntry type="library" name="LGoodDatePicker-11.2.1-sources" level="project" />
+    <orderEntry type="library" name="LGoodDatePicker-11.2.1" level="project" />
   </component>
 </module>

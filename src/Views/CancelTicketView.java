@@ -14,6 +14,7 @@ public class CancelTicketView extends View {
     private JTable table1;
     private JButton deleteButton;
     private JTextField textField1;
+    private JButton backButton;
     DefaultTableModel tableModel;
 
     CancelTicketView(Controller controller) {
@@ -66,5 +67,6 @@ public class CancelTicketView extends View {
                         );
             }
         );
+        backButton.addActionListener(e->controller.goBack());
     }
 }

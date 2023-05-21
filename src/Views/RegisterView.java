@@ -13,6 +13,7 @@ public class RegisterView extends View {
     private JTextField ageField;
     private JTextField adressField;
     private JButton registerButton;
+    private JButton backButton;
 
     public RegisterView() {
         super();
@@ -23,6 +24,6 @@ public class RegisterView extends View {
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
         registerButton.addActionListener(e -> controller.tryRegister(nameField.getText(),userNameField.getText(), new String(passwordField.getPassword()), Integer.parseInt(ageField.getText()), adressField.getText()));
-
+        backButton.addActionListener(e->controller.goBack());
     }
 }

@@ -10,6 +10,7 @@ public class adminView extends View{
     private JButton trainUpdatebutton;
     private JButton addATripButton;
     private JButton updateATripButton;
+    private JButton backButton;
 
     public adminView() {
         super();
@@ -23,5 +24,6 @@ public class adminView extends View{
         trainUpdatebutton.addActionListener(e -> controller.openUpdateTrain());
         addATripButton.addActionListener(e -> controller.openAddTrip());
         updateATripButton.addActionListener(e -> controller.openUpdateTrip());
+        backButton.addActionListener(e->controller.goBack());
     }
 }

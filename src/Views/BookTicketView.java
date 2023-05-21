@@ -22,6 +22,7 @@ public class BookTicketView extends View {
     ArrayList<Integer> tripsIds;
     private JTextField idField;
     private JButton bookButton;
+    private JButton backButton;
 
     BookTicketView() {
         super();
@@ -40,6 +41,7 @@ public class BookTicketView extends View {
             }
             controller.bookTkt(Integer.parseInt(idField.getText()));
         });
+        backButton.addActionListener(e->controller.goBack());
     }
     private void displayTrips() {
         DataBase db = new DataBase();
