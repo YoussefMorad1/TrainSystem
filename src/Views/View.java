@@ -16,10 +16,13 @@ public abstract class View extends JFrame {
         this.setTitle("Train System");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setSize(800, 500);
+//        this.setSize(800, 500);
+        this.setMinimumSize(new Dimension(400, 400));
+//        this.setPreferredSize(new Dimension(800,500));
         this.getContentPane().setBackground(Color.white);
         this.displayPanel(panel);
         this.setVisible(true);
+        this.pack();
     }
 //    public void updateModel(Model model){
 //        this.model = model;

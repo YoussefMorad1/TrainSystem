@@ -36,7 +36,7 @@ public class CancelTicketView extends View {
         for (String str : columns) {
             tableModel.addColumn(str);
         }
-        tableModel.addRow(columns);
+//        tableModel.addRow(columns);
         ResultSet userTrips = new DataBase().getUserTrips(controller.getModel().getUserName());
         try {
             while (userTrips.next()) {

@@ -2,48 +2,114 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.UserHomeView">
   <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="872" height="510"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-16759150"/>
+    </properties>
     <border type="none"/>
     <children>
-      <component id="2b065" class="javax.swing.JButton" binding="bookATicketButton" default-binding="true">
-        <constraints border-constraint="North"/>
-        <properties>
-          <text value="Book a ticket"/>
-        </properties>
-      </component>
       <grid id="88852" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints border-constraint="Center"/>
-        <properties/>
+        <properties>
+          <background color="-16759150"/>
+        </properties>
         <border type="none"/>
         <children>
-          <component id="fc96c" class="javax.swing.JButton" binding="cancelATicketButton" default-binding="true">
-            <constraints border-constraint="North"/>
-            <properties>
-              <text value="Cancel a ticket"/>
-            </properties>
-          </component>
           <grid id="a41f1" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints border-constraint="Center"/>
-            <properties/>
+            <properties>
+              <background color="-16759150"/>
+            </properties>
             <border type="none"/>
             <children>
-              <component id="687a" class="javax.swing.JButton" binding="editProfileButton" default-binding="true">
-                <constraints border-constraint="North"/>
-                <properties>
-                  <text value="Edit profile"/>
-                </properties>
-              </component>
               <grid id="2b619" layout-manager="BorderLayout" hgap="0" vgap="0">
                 <constraints border-constraint="South"/>
-                <properties/>
+                <properties>
+                  <background color="-16759150"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <component id="6f71e" class="javax.swing.JButton" binding="backButton" default-binding="true">
                     <constraints border-constraint="West"/>
                     <properties>
+                      <background color="-65536"/>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <preferredSize width="100" height="35"/>
                       <text value="Back"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="77e1a" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-16759150"/>
+          <focusable value="true"/>
+        </properties>
+        <border type="empty">
+          <font/>
+          <title-color color="-4473925"/>
+          <size top="150" left="130" bottom="150" right="100"/>
+        </border>
+        <children>
+          <component id="72aaa" class="javax.swing.JButton" binding="bookATicketButton" default-binding="true">
+            <constraints border-constraint="West"/>
+            <properties>
+              <autoscrolls value="false"/>
+              <background color="-16736684"/>
+              <borderPainted value="true"/>
+              <contentAreaFilled value="true"/>
+              <defaultCapable value="true"/>
+              <doubleBuffered value="false"/>
+              <focusPainted value="true"/>
+              <focusable value="false"/>
+              <font size="18"/>
+              <preferredSize width="200" height="100"/>
+              <text value="Book a ticket"/>
+            </properties>
+          </component>
+          <grid id="33303" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <background color="-16759150"/>
+            </properties>
+            <border type="empty">
+              <size top="0" left="50" bottom="0" right="50"/>
+            </border>
+            <children>
+              <component id="78b9f" class="javax.swing.JButton" binding="cancelATicketButton" default-binding="true">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <background color="-16736684"/>
+                  <focusable value="false"/>
+                  <font size="18"/>
+                  <preferredSize width="200" height="100"/>
+                  <text value="Cancel a ticket"/>
+                </properties>
+              </component>
+              <grid id="3da2" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <background color="-16759150"/>
+                </properties>
+                <border type="empty">
+                  <size top="0" left="50" bottom="0" right="0"/>
+                </border>
+                <children>
+                  <component id="16010" class="javax.swing.JButton" binding="editProfileButton" default-binding="true">
+                    <constraints border-constraint="West"/>
+                    <properties>
+                      <background color="-16736684"/>
+                      <focusable value="false"/>
+                      <font size="18"/>
+                      <preferredSize width="200" height="100"/>
+                      <text value="Edit profile"/>
                     </properties>
                   </component>
                 </children>

@@ -79,7 +79,7 @@ public class BookTicketView extends View {
         for (String str : columns) {
             tableModel.addColumn(str);
         }
-        tableModel.addRow(columns);
+//        tableModel.addRow(columns);
         try {
             while (trips.next()) {
                 tripsIds.add(trips.getInt(1));
