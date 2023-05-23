@@ -38,4 +38,11 @@ public abstract class View extends JFrame {
     public void showMessage(String str){
         JOptionPane.showMessageDialog(this, str);
     }
+
+
+    public boolean showConfirmDialog(String str){
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this, str, "Warning", dialogButton);
+        return dialogResult == JOptionPane.YES_OPTION;
+    }
 }

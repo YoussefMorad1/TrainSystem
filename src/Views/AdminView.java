@@ -25,7 +25,10 @@ public class AdminView extends View{
         trainUpdatebutton.addActionListener(e -> controller.viewAllTrains());
         addATripButton.addActionListener(e -> controller.openAddTrip());
         viewAllTrips.addActionListener(e -> controller.viewAllTrips());
-        backButton.addActionListener(e->controller.goBack());
+        backButton.addActionListener(e->{
+            if(showConfirmDialog("Are you sure you want to logout?"))
+                controller.goBack();
+        });
         reportButton.addActionListener(e->controller.openReport());
     }
 }

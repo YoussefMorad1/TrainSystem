@@ -58,12 +58,8 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="65b32" class="javax.swing.JTextField" binding="newClass">
-                            <constraints border-constraint="North"/>
-                            <properties/>
-                          </component>
                           <grid id="d23c" layout-manager="BorderLayout" hgap="0" vgap="0">
-                            <constraints border-constraint="Center"/>
+                            <constraints border-constraint="South"/>
                             <properties/>
                             <border type="none"/>
                             <children>
@@ -88,6 +84,49 @@
                               </grid>
                             </children>
                           </grid>
+                          <grid id="11cec" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="North"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="b89f1" class="javax.swing.JRadioButton" binding="firstRadioButton" default-binding="true">
+                                <constraints border-constraint="West"/>
+                                <properties>
+                                  <text value="First"/>
+                                </properties>
+                              </component>
+                              <grid id="a4798" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                                <border type="empty">
+                                  <size top="0" left="50" bottom="0" right="0"/>
+                                </border>
+                                <children>
+                                  <component id="549a3" class="javax.swing.JRadioButton" binding="secondRadioButton" default-binding="true">
+                                    <constraints border-constraint="West"/>
+                                    <properties>
+                                      <text value="Second"/>
+                                    </properties>
+                                  </component>
+                                  <grid id="54c1f" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                    <constraints border-constraint="Center"/>
+                                    <properties/>
+                                    <border type="empty">
+                                      <size top="0" left="50" bottom="0" right="0"/>
+                                    </border>
+                                    <children>
+                                      <component id="90a12" class="javax.swing.JRadioButton" binding="thirdRadioButton" default-binding="true">
+                                        <constraints border-constraint="West"/>
+                                        <properties>
+                                          <text value="Third"/>
+                                        </properties>
+                                      </component>
+                                    </children>
+                                  </grid>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
                         </children>
                       </grid>
                     </children>
@@ -100,4 +139,11 @@
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="EditClass">
+      <member id="b89f1"/>
+      <member id="549a3"/>
+      <member id="90a12"/>
+    </group>
+  </buttonGroups>
 </form>

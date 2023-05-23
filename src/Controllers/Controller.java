@@ -114,6 +114,11 @@ public class Controller {
             view.showMessage("Please enter a valid number of seats");
             return;
         }
+        if(classNumber == 0)
+        {
+            view.showMessage("You must choose a class!");
+            return;
+        }
         if (model.addTrain(seats, classNumber)) {
             view.showMessage("Train added successfully");
             view = view.getNewView();
@@ -135,6 +140,7 @@ public class Controller {
         }
         if (model.updateTrain(id, seats, classNumber)) {
             view.showMessage("Train updated successfully");
+            model.setState(State.VIEW_ALL_TRAINS);
             view = view.getNewView();
             view.addEventListener(this);
         }
@@ -222,9 +228,10 @@ public class Controller {
         view.addEventListener(this);
     }
 
-    public void openUpdateTrain() {
+    public void openUpdateTrain(int trainId) {
         model.setState(State.UPDATE_TRAIN);
-        view = view.getNewView();
+        view.dispose();
+        view = ViewFactory.createEditView(trainId, this);
         view.addEventListener(this);
     }
 
@@ -279,7 +286,7 @@ public class Controller {
     }
     public void goBack(){
         State curState = model.getCurrentState(), newState = State.LOGIN;
-        if(curState == State.ADD_TRIP || curState == State.ADD_TRAIN || curState == State.UPDATE_TRAIN || curState == State.UPDATE_TRIP)
+        if(curState == State.ADD_TRIP || curState == State.ADD_TRAIN || curState == State.UPDATE_TRAIN || curState == State.UPDATE_TRIP || curState == State.VIEW_ALL_TRIPS || curState == State.VIEW_ALL_TRAINS || curState == State.REPORT)
             newState = State.ADMIN_HOME;
         else if(curState == State.ADMIN_HOME || curState == State.USER_HOME || curState == State.REGISTER)
             model.logout();

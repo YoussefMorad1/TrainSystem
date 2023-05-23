@@ -30,7 +30,7 @@ public class AddTrainView extends View{
 
         addTrainButton.addActionListener(e -> controller.tryAddTrain(
                     seatsNumber.getText(),
-                radioButton1.isSelected() ? 1 : radioButton2.isSelected() ? 2 : 3
+                radioButton1.isSelected() ? 1 : radioButton2.isSelected() ? 2 : thirdRadioButton.isSelected() ? 3 : 0
                 )
         );
         backButton.addActionListener(e -> controller.goBack());

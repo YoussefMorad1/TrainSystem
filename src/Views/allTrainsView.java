@@ -55,7 +55,7 @@ public class allTrainsView extends View{
                         this.showMessage("Wrong Trip Id");
                         return;
                     }
-                    controller.openUpdateTrip(Integer.parseInt(textField1.getText()));
+                    controller.openUpdateTrain(Integer.parseInt(textField1.getText()));
                 }
         );
         backButton.addActionListener(e->controller.goBack());

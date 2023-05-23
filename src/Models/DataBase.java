@@ -13,7 +13,8 @@ public class DataBase {
 
     public DataBase() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:src\\Models\\trainSystem.db");
+            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
+                    "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
@@ -48,25 +49,27 @@ public class DataBase {
         }
         return null;
     }
-    public ResultSet getAllTrips(){
+
+    public ResultSet getAllTrips() {
         ResultSet ans;
         String query = "select * from trips".formatted();
         try {
             Statement sttmnt = connection.createStatement();
             ans = sttmnt.executeQuery(query);
-           //  closeConnection();
+            //  closeConnection();
             return ans;
         } catch (Exception exception) {
         }
         return null;
     }
-    public ResultSet getAllTrains(){
+
+    public ResultSet getAllTrains() {
         ResultSet ans;
         String query = "select * from trains".formatted();
         try {
             Statement sttmnt = connection.createStatement();
             ans = sttmnt.executeQuery(query);
-             closeConnection();
+//            closeConnection();
             return ans;
         } catch (Exception exception) {
         }
@@ -78,7 +81,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-             closeConnection();
+//            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -91,7 +94,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+//            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -104,7 +107,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+//            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -115,7 +118,7 @@ public class DataBase {
     public boolean addTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         // first get the number of availableSeats from the trains relation
         int availableSeats = getTrainSeats(trainId);
-        if(availableSeats == -1)
+        if (availableSeats == -1)
             return false;
         String query = "insert into trips (startLocation,destination,availableSeats,startTime,arriveTime,available,trainId,price) values ('%s','%s',%d,'%s','%s',1, %d, %f)"
                 .formatted(startLocation, destination, availableSeats, startTime.toLocalDate() + " " +
@@ -130,7 +133,8 @@ public class DataBase {
         }
         return false;
     }
-    private int getTrainSeats(int trainId){
+
+    private int getTrainSeats(int trainId) {
         String availableSeatsQuery = "select seats from trains where id = %d".formatted(trainId);
         int availableSeats = -1;
         try {
@@ -145,12 +149,13 @@ public class DataBase {
         }
         return availableSeats;
     }
+
     public boolean updateTrip(int tripId, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         int availableSeats = getTrainSeats(trainId);
-        if(availableSeats == -1)
+        if (availableSeats == -1)
             return false;
         String query = "update trips set startLocation = '%s' , destination = '%s' , availableSeats = %d , startTime = '%s' , arriveTime = '%s' , trainId = %d , price = %f where id = %d"
-                .formatted(startLocation, destination, availableSeats, startTime.toLocalDate()  + " " + startTime.toLocalTime(),
+                .formatted(startLocation, destination, availableSeats, startTime.toLocalDate() + " " + startTime.toLocalTime(),
                         arrivalTime.toLocalDate() + " " + arrivalTime.toLocalTime(), trainId, price, tripId);
         try {
             Statement sttmnt = connection.createStatement();
@@ -162,6 +167,7 @@ public class DataBase {
         }
         return false;
     }
+
     public ResultSet getTripInfo(int tripId) {
         String query = "select * from trips where id = %d".formatted(tripId);
         try {
@@ -174,6 +180,7 @@ public class DataBase {
         }
         return null;
     }
+
     public ResultSet getTrainInfo(int trainId) {
         String query = "select * from trains where id = %d".formatted(trainId);
         try {
@@ -291,6 +298,8 @@ public class DataBase {
         }
         return false;
     }
+
+
     public int getTotalTrains()
     {
         String query = "select count(id) from trains";
@@ -359,16 +368,16 @@ public class DataBase {
 //    }
 
 
-    public void closeConnection() {
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        }
-    }
+//    public void closeConnection() {
+//        try {
+//            if (connection != null) {
+//                connection.close();
+//            }
+//        } catch (SQLException e) {
+//
+//            e.printStackTrace();
+//        }
+//    }
     public Connection getConnection() {
         return connection;
     }

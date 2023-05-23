@@ -54,7 +54,8 @@
                       <component id="5f1c3" class="javax.swing.JButton" binding="backButton" default-binding="true">
                         <constraints border-constraint="West"/>
                         <properties>
-                          <text value="Back"/>
+                          <background color="-4318464"/>
+                          <text value="Logout"/>
                         </properties>
                       </component>
                     </children>
