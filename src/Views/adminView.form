@@ -59,6 +59,19 @@
                       </component>
                     </children>
                   </grid>
+                  <grid id="499d" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="ccec4" class="javax.swing.JButton" binding="reportButton">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <text value="Report"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
                 </children>
               </grid>
             </children>

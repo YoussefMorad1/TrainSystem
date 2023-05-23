@@ -45,6 +45,10 @@ public class ViewFactory {
         else if(type == State.UPDATE_TRIP){
             view = new updateTripView();
         }
+        else if(type == State.REPORT){
+            view = new reportView();
+        }
+
         return view;
     }
 }

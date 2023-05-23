@@ -13,8 +13,7 @@ public class DataBase {
 
     public DataBase() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
-                    "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
+            connection = DriverManager.getConnection("jdbc:sqlite:src\\Models\\trainSystem.db");
         } catch (Exception exception) {
         }
     }
@@ -29,7 +28,7 @@ public class DataBase {
         try {
             Statement st = connection.createStatement();
             ans = st.executeQuery(query);
-            //closeConnection();
+            closeConnection();
             return ans.next();
         } catch (Exception exception) {
         }
@@ -42,7 +41,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             ans = sttmnt.executeQuery(query);
-            // closeConnection();
+             closeConnection();
             return ans;
         } catch (Exception exception) {
         }
@@ -54,7 +53,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            // closeConnection();
+             closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -67,7 +66,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            //closeConnection();
+            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -80,7 +79,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            //closeConnection();
+            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -99,7 +98,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            // closeConnection();
+             closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -112,6 +111,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             ResultSet seatsResultSet = statement.executeQuery(availableSeatsQuery);
+            closeConnection();
             if (seatsResultSet.next()) {
                 availableSeats = seatsResultSet.getInt(1);
             }
@@ -130,7 +130,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            // closeConnection();
+             closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -145,6 +145,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             ResultSet ans = statement.executeQuery(seatIdQuery);
+
             if (ans.next()) {
                 availableSeats = ans.getInt(1);
             }
@@ -156,6 +157,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(insertTktQuery);
+
         } catch (Exception exception) {
             System.out.println(exception);
         }
@@ -164,7 +166,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateAvailableSeatsQuery);
-            //closeConnection();
+            closeConnection();
         } catch (Exception exception) {
             System.out.println(exception);
         }
@@ -175,7 +177,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            //closeConnection();
+            closeConnection();
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
@@ -210,7 +212,69 @@ public class DataBase {
         }
         return null;
     }
+    public int getTotalTrains()
+    {
+        String query = "select count(id) from trains";
+       return (executeAggregateQuery(query));
+    }
+    public int getTotalTrips()
+    {
+        String query = "select count(id) from trips";
+        return (executeAggregateQuery(query));
+    }
+    public int getMinTicketPrice()
+    {
+        String query = "select min(price) from trips";
+        return (executeAggregateQuery(query));
+    }
+    public int getMaxTicketPrice()
+    {
+        String query = "select max(price) from trips";
+        return (executeAggregateQuery(query));
+    }
+    public int getAvgTicketPrice()
+    {
+        String query = "select avg(price) from trips";
+        return (executeAggregateQuery(query));
+    }
+    public int getTotalRevenue()
+    {
+        String query = "select sum(price) from tickets";
+        return (executeAggregateQuery(query));
+    }
+    public int executeAggregateQuery(String query) {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet ans = statement.executeQuery(query);
 
+            int result = -1;
+            if (ans.next()) {
+                result = ans.getInt(1);
+            }
+
+            ans.close(); // Close the ResultSet
+            return result;
+        } catch (SQLException exception) {
+            System.out.println(exception);
+            return -1;
+        }
+    }
+
+
+    //    public int executeAggregateQuery(String query) {
+//        try {
+//            Statement statement = connection.createStatement();
+//            ResultSet ans = statement.executeQuery(query);
+//            closeConnection();
+//            if (ans.next()) {
+//                return ans.getInt(1);
+//            }
+//        } catch (Exception exception) {
+//            System.out.println(exception);
+//            return -1;
+//        }
+//        return -1;
+//    }
     //    public Connection getConnection() {
 //        return connection;
 //    }
@@ -234,7 +298,7 @@ public class DataBase {
                 connection.close();
             }
         } catch (SQLException e) {
-            // Handle any errors that occur while closing the connection
+
             e.printStackTrace();
         }
     }

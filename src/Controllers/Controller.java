@@ -159,6 +159,11 @@ public class Controller {
         view = view.getNewView();
         view.addEventListener(this);
     }
+    public void openReport(){
+        model.setState(State.REPORT);
+        view = view.getNewView();
+        view.addEventListener(this);
+    }
 
     public void deleteTicket(int ticketId, String username) {
         DataBase db = new DataBase();
@@ -190,6 +195,43 @@ public class Controller {
         view = view.getNewView();
         view.addEventListener(this);
     }
+    public int getTotalTrains()
+    {
+        DataBase db = new DataBase();
+        int totalTrains = db.getTotalTrains();
+        return totalTrains;
+    }
+    public int getTotalTrips()
+    {
+        DataBase db = new DataBase();
+        int totalTrips = db.getTotalTrips();
+        return totalTrips;
+    }
+    public int getMinTicketPrice()
+    {
+        DataBase db = new DataBase();
+        int minTicketPrice = db.getMinTicketPrice();
+        return minTicketPrice;
+    }
+    public int getMaxTicketPrice()
+    {
+        DataBase db = new DataBase();
+        int maxTicketPrice = db.getMaxTicketPrice();
+        return maxTicketPrice;
+    }
+    public int getAvgTicketPrice()
+    {
+        DataBase db = new DataBase();
+        int avgTicketPrice = db.getAvgTicketPrice();
+        return avgTicketPrice;
+    }
+    public int getTotalRevenue()
+    {
+        DataBase db = new DataBase();
+        int totalRevenue = db.getTotalRevenue();
+        return totalRevenue;
+    }
+
 
     public Model getModel() {
         return model;
