@@ -60,7 +60,7 @@ public class CancelTicketView extends View {
         super.addEventListener(controller);
         deleteButton.addActionListener(e -> {
                 if (!textField1.getText().chars().allMatch(Character::isDigit)) {
-                    this.showError("Wrong Trip Id");
+                    this.showMessage("Wrong Trip Id");
                     return;
                 }
                 controller.deleteTicket(

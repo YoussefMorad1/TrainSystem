@@ -2,7 +2,7 @@ package Views;
 
 import javax.swing.*;
 import java.awt.*;
-import Models.Model;
+
 import Controllers.*;
 
 public abstract class View extends JFrame {
@@ -35,7 +35,7 @@ public abstract class View extends JFrame {
         panel.setVisible(true);
         this.add(panel);
     }
-    public void showError(String str){
+    public void showMessage(String str){
         JOptionPane.showMessageDialog(this, str);
     }
 }

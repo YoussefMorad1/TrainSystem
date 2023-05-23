@@ -3,7 +3,6 @@ package Controllers;
 import Models.DataBase;
 import Models.Model;
 import Views.View;
-import Views.ViewFactory;
 
 
 import java.sql.ResultSet;
@@ -60,20 +59,20 @@ public class Controller {
             view.addEventListener(this);
             // closeDatabaseConnection();
         } else {
-            view.showError("Wrong Credentials");
+            view.showMessage("Wrong Credentials");
         }
     }
 
     public void tryRegister(String name, String userName, String password, int age, String address) {
         if (name.isEmpty() || userName.isEmpty() || password.isEmpty() || age == 0 || address.isEmpty()) {
-            view.showError("Please fill all the fields");
+            view.showMessage("Please fill all the fields");
             return;
         }
         if (model.register(name, userName, password, age, address)) {
             view = view.getNewView();
             view.addEventListener(this);
         } else {
-            view.showError("Wrong Credentials");
+            view.showMessage("Wrong Credentials");
         }
     }
 
@@ -96,10 +95,10 @@ public class Controller {
 
     public void tryAddTrain(int seats, int classNumber) {
         if (seats == 0 || classNumber == 0) {
-            view.showError("Please fill all the fields");
+            view.showMessage("Please fill all the fields");
             return;
         } else if (classNumber > 3 || classNumber < 1) {
-            view.showError("Class number must be between 1 and 3");
+            view.showMessage("Class number must be between 1 and 3");
             return;
         }
         if (model.addTrain(seats, classNumber)) {
@@ -111,7 +110,7 @@ public class Controller {
 
     public void tryUpdateTrain(int id, int seats, int classNumber) {
         if (seats == 0 || classNumber == 0) {
-            view.showError("Please fill all the fields");
+            view.showMessage("Please fill all the fields");
             return;
         }
         if (model.updateTrain(id, seats, classNumber)) {
@@ -123,20 +122,20 @@ public class Controller {
 
     public void tryAddTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         if (startLocation.isEmpty() || destination.isEmpty() || startTime == null || arrivalTime == null) {
-            view.showError("Please fill all the fields");
+            view.showMessage("Please fill all the fields");
             return;
         }
         if (model.addTrip(startLocation, destination, startTime, arrivalTime, trainId, price)) {
             view = view.getNewView();
             view.addEventListener(this);
         } else {
-            view.showError("Please enter valid train ID");
+            view.showMessage("Please enter valid train ID");
         }
     }
 
     public void tryUpdateTrip(int id, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         if (startLocation.isEmpty() || destination.isEmpty() || startTime == null || arrivalTime == null || trainId == 0) {
-            view.showError("Please fill all the fields");
+            view.showMessage("Please fill all the fields");
             return;
         }
         if (model.updateTrip(id, startLocation, destination, startTime, arrivalTime, trainId, price)) {
@@ -151,16 +150,18 @@ public class Controller {
         try {
             age = Integer.parseInt(ageString);
         } catch (Exception e) {
-            view.showError("Please enter a valid age");
+            view.showMessage("Please enter a valid age");
             return;
         }
         if (name.isEmpty() || userName.isEmpty() || password.isEmpty() || age == 0 || address.isEmpty()) {
-            view.showError("Please fill all the fields");
+            view.showMessage("Please fill all the fields");
             return;
         }
         if (model.editProfile(userName, name, password, age, address)) {
             view = view.getNewView();
             view.addEventListener(this);
+            // show success message
+            view.showMessage("Profile updated successfully");
         }
     }
 
