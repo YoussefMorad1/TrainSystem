@@ -13,8 +13,8 @@ public class DataBase {
 
     public DataBase() {
         try {
-                connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
-                        "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
+            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
+                    "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
@@ -30,6 +30,7 @@ public class DataBase {
         try {
             Statement st = connection.createStatement();
             ans = st.executeQuery(query);
+//            closeConnection();
             return ans.next();
         } catch (Exception exception) {
         }
@@ -62,7 +63,6 @@ public class DataBase {
         return false;
     }
 
-
     public boolean addTrain(int seats, int classNumber) {
         String query = "insert into trains (seats,class) values (%d,%d)".formatted(seats, classNumber);
         try {
@@ -89,14 +89,14 @@ public class DataBase {
         return false;
     }
 
-    public boolean addTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {
+    public boolean addTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         // first get the number of availableSeats from the trains relation
         int availableSeats = getTrainSeats(trainId);
         if(availableSeats == -1)
             return false;
-        String query = "insert into trips (startLocation,destination,availableSeats,startTime,arriveTime,available,trainId) values ('%s','%s',%d,'%s','%s',1, %d)"
+        String query = "insert into trips (startLocation,destination,availableSeats,startTime,arriveTime,available,trainId,price) values ('%s','%s',%d,'%s','%s',1, %d, %f)"
                 .formatted(startLocation, destination, availableSeats, startTime.toLocalDate() + " " +
-                        startTime.toLocalTime(), arrivalTime.toLocalDate() + " " + arrivalTime.toLocalTime(), trainId);
+                        startTime.toLocalTime(), arrivalTime.toLocalDate() + " " + arrivalTime.toLocalTime(), trainId, price);
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
@@ -122,16 +122,17 @@ public class DataBase {
         }
         return availableSeats;
     }
-    public boolean updateTrip(int tripId, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {
+    public boolean updateTrip(int tripId, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         int availableSeats = getTrainSeats(trainId);
         if(availableSeats == -1)
             return false;
-        String query = "update trips set startLocation = '%s' , destination = '%s' , availableSeats = %d , startTime = '%s' , arriveTime = '%s' , trainId = %d where id = %d"
+        String query = "update trips set startLocation = '%s' , destination = '%s' , availableSeats = %d , startTime = '%s' , arriveTime = '%s' , trainId = %d , price = %f where id = %d"
                 .formatted(startLocation, destination, availableSeats, startTime.toLocalDate()  + " " + startTime.toLocalTime(),
-                        arrivalTime.toLocalDate() + " " + arrivalTime.toLocalTime(), trainId, tripId);
+                        arrivalTime.toLocalDate() + " " + arrivalTime.toLocalTime(), trainId, price, tripId);
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
+//             closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -167,6 +168,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateAvailableSeatsQuery);
+//            closeConnection();
         } catch (Exception exception) {
             System.out.println(exception);
         }
@@ -177,6 +179,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
+//            closeConnection();
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
@@ -303,13 +306,15 @@ public class DataBase {
     //    public Connection getConnection() {
 //        return connection;
 //    }
+
+
 //    public void closeConnection() {
 //        try {
 //            if (connection != null) {
 //                connection.close();
 //            }
 //        } catch (SQLException e) {
-//            // Handle any errors that occur while closing the connection
+//
 //            e.printStackTrace();
 //        }
 //    }
@@ -317,4 +322,14 @@ public class DataBase {
         return connection;
     }
 
+//    public void closeConnection() {
+//        try {
+//            if (connection != null) {
+//                connection.close();
+//            }
+//        } catch (SQLException e) {
+//
+//            e.printStackTrace();
+//        }
+//    }
 }

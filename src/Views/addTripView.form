@@ -50,7 +50,7 @@
                       <component id="c40f5" class="javax.swing.JLabel">
                         <constraints border-constraint="North"/>
                         <properties>
-                          <text value="Price (currently unavailable)"/>
+                          <text value="Price"/>
                         </properties>
                       </component>
                       <grid id="74e2c" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -58,7 +58,7 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="fbff8" class="javax.swing.JTextField" binding="avaliableSeats">
+                          <component id="fbff8" class="javax.swing.JTextField" binding="priceField">
                             <constraints border-constraint="North"/>
                             <properties/>
                           </component>

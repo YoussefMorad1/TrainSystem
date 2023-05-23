@@ -32,7 +32,7 @@ public class CancelTicketView extends View {
             }
         };
         String[] columns = {"Trip ID", "Start Location", "Destination", "Start Time",
-                "Arrive Time", "Train ID", "Still Available?"};
+                "Arrive Time", "Train ID", "Still Available?", "Price"};
         for (String str : columns) {
             tableModel.addColumn(str);
         }
@@ -47,6 +47,7 @@ public class CancelTicketView extends View {
                 }
                 arr.add(userTrips.getInt(8));
                 arr.add(userTrips.getInt(7) == 1 ? "Yes" : "No");
+                arr.add(userTrips.getInt(9));
                 tableModel.addRow(arr);
             }
         } catch (Exception ignored) {
