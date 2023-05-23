@@ -13,6 +13,9 @@ public class addTrainView extends View{
     private JTextField seatsNumber;
     private JTextField classNumber;
     private JButton backButton;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
+    private JRadioButton thirdRadioButton;
 
 
     public addTrainView() {
@@ -23,7 +26,13 @@ public class addTrainView extends View{
 
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
-        addTrainButton.addActionListener(e -> controller.tryAddTrain(Integer.parseInt(seatsNumber.getText()),Integer.parseInt(classNumber.getText())));
+        // get the selected radio button
+
+        addTrainButton.addActionListener(e -> controller.tryAddTrain(
+                    Integer.parseInt(seatsNumber.getText()),
+                radioButton1.isSelected() ? 1 : radioButton2.isSelected() ? 2 : 3
+                )
+        );
         backButton.addActionListener(e -> controller.goBack());
     }
 

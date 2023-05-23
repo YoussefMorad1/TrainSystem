@@ -37,7 +37,7 @@ public class BookTicketView extends View {
         bookButton.addActionListener(e -> {
             if (!tripsIds.contains(Integer.parseInt(idField.getText())) ||
                     !idField.getText().chars().allMatch(Character::isDigit)) {
-                showError("Wrong Trip ID");
+                showMessage("Wrong Trip ID");
                 return;
             }
             controller.bookTkt(Integer.parseInt(idField.getText()));
