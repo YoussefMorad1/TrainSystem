@@ -40,7 +40,7 @@ public class ViewFactory {
             view = new BookTicketView();
         }
         else if(type == State.REPORT){
-            view = new ReportView();
+            view = new ReportV2();
         }
         else if(type == State.VIEW_ALL_TRIPS){
             view = new AllTripsView(controller);
