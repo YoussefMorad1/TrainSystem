@@ -10,12 +10,10 @@ public class UserHomeView extends View {
     private JButton cancelATicketButton;
     private JButton editProfileButton;
     private JButton backButton;
-
     public UserHomeView(){
         super();
         super.displayFrame(mainPanel);
     }
-
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
         bookATicketButton.addActionListener(e -> controller.changeFromHomeView(State.BOOK_TKT));

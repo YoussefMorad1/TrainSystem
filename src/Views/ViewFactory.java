@@ -42,13 +42,13 @@ public class ViewFactory {
         {
             view = new BookTicketView();
         }
-        else if(type == State.UPDATE_TRIP){
-            view = new updateTripView();
-        }
         else if(type == State.REPORT){
             view = new reportView();
         }
 
         return view;
+    }
+    public static View createEditTripView(int tripId){
+        return new updateTripView(tripId);
     }
 }
