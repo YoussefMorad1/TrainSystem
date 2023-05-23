@@ -22,7 +22,7 @@ public class AdminView extends View{
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
         trainAddButoon.addActionListener(e -> controller.openAddTrain());
-        trainUpdatebutton.addActionListener(e -> controller.openUpdateTrain());
+        trainUpdatebutton.addActionListener(e -> controller.viewAllTrains());
         addATripButton.addActionListener(e -> controller.openAddTrip());
         viewAllTrips.addActionListener(e -> controller.viewAllTrips());
         backButton.addActionListener(e->controller.goBack());
