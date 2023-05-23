@@ -4,16 +4,16 @@ import Controllers.Controller;
 
 import javax.swing.*;
 
-public class adminView extends View{
+public class AdminView extends View{
     private JPanel panel1;
     private JButton trainAddButoon;
     private JButton trainUpdatebutton;
     private JButton addATripButton;
-    private JButton updateATripButton;
+    private JButton viewAllTrips;
     private JButton backButton;
     private JButton reportButton;
 
-    public adminView() {
+    public AdminView() {
         super();
         super.displayFrame(panel1);
     }
@@ -24,7 +24,7 @@ public class adminView extends View{
         trainAddButoon.addActionListener(e -> controller.openAddTrain());
         trainUpdatebutton.addActionListener(e -> controller.openUpdateTrain());
         addATripButton.addActionListener(e -> controller.openAddTrip());
-        updateATripButton.addActionListener(e -> controller.openUpdateTrip());
+        viewAllTrips.addActionListener(e -> controller.viewAllTrips());
         backButton.addActionListener(e->controller.goBack());
         reportButton.addActionListener(e->controller.openReport());
     }

@@ -98,4 +98,21 @@ public class Model {
     public boolean isAdmin() {
         return isAdmin;
     }
+
+    public String[] getTripInfo(int tripId) {
+        DataBase db = new DataBase();
+        ResultSet ans = db.getTripInfo(tripId);
+        String[] arr = new String[9];
+        try {
+            ans.next();
+            for(int i = 1; i <= 9; i++){
+                arr[i-1] = ans.getString(i);
+            }
+            return arr;
+        }
+        catch (Exception exception){
+            System.out.println(exception);
+        }
+        return null;
+    }
 }

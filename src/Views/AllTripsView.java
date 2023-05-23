@@ -15,7 +15,7 @@ public class AllTripsView extends View{
     private JButton editButton;
     private JTable table1;
     private DefaultTableModel tableModel;
-    AllTripsView(){
+    AllTripsView(Controller controller){
         super();
         this.controller = controller;
         createUIComponents();
@@ -34,7 +34,7 @@ public class AllTripsView extends View{
             tableModel.addColumn(str);
         }
 //        tableModel.addRow(columns);
-        ResultSet userTrips = new DataBase().getUserTrips(controller.getModel().getUserName());
+        ResultSet userTrips = controller.getAllTrips();
         try {
             while (userTrips.next()) {
                 Vector<Object> arr = new Vector<>();
@@ -42,9 +42,9 @@ public class AllTripsView extends View{
                     if (i == 4) continue;
                     arr.add(userTrips.getString(i));
                 }
-                arr.add(userTrips.getInt(8));
                 arr.add(userTrips.getInt(7) == 1 ? "Yes" : "No");
-                arr.add(userTrips.getInt(9));
+                arr.add(userTrips.getInt(8));
+                arr.add(userTrips.getFloat(9));
                 tableModel.addRow(arr);
             }
         } catch (Exception ignored) {
@@ -59,7 +59,7 @@ public class AllTripsView extends View{
                         this.showError("Wrong Trip Id");
                         return;
                     }
-                    controller.openUpdateTrip();
+                    controller.openUpdateTrip(Integer.parseInt(textField1.getText()));
                 }
         );
         backButton.addActionListener(e->controller.goBack());

@@ -18,7 +18,7 @@ public class ViewFactory {
         }
         else if(type == State.ADMIN_HOME)
         {
-            view = new adminView();
+            view = new AdminView();
         }
         else if(type == State.REGISTER){
             view = new RegisterView();
@@ -28,27 +28,36 @@ public class ViewFactory {
         }
         else if(type == State.ADD_TRAIN)
         {
-            view = new addTrainView();
+            view = new AddTrainView();
         }
         else if(type == State.UPDATE_TRAIN)
         {
-            view = new trainUpdateView();
+            view = new TrainUpdateView();
         }
         else if(type == State.ADD_TRIP)
         {
-            view = new addTripView();
+            view = new AddTripView();
         }
         else if(type == State.BOOK_TKT)
         {
             view = new BookTicketView();
         }
         else if(type == State.REPORT){
-            view = new reportView();
+            view = new ReportView();
+        }
+        else if(type == State.VIEW_ALL_TRIPS){
+            view = new AllTripsView(controller);
         }
 
         return view;
     }
-    public static View createEditTripView(int tripId){
-        return new updateTripView(tripId);
+    public static View createEditView(int id, Controller controller){
+        State type = controller.getModel().getCurrentState();
+        View view = null;
+        if(type == State.UPDATE_TRIP)
+            view = new UpdateTripView(id, controller);
+        else if(type == State.UPDATE_TRAIN)
+            ;//view = new UpdateTrainView(id, controller);
+        return view;
     }
 }

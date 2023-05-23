@@ -6,10 +6,6 @@ import Views.View;
 import Views.ViewFactory;
 
 
-import javax.swing.*;
-import javax.xml.transform.Result;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 
@@ -144,6 +140,7 @@ public class Controller {
             return;
         }
         if (model.updateTrip(id, startLocation, destination, startTime, arrivalTime, trainId, price)) {
+            model.setState(State.VIEW_ALL_TRIPS);
             view = view.getNewView();
             view.addEventListener(this);
         }
@@ -197,8 +194,14 @@ public class Controller {
 
     public void openUpdateTrip(int tripId) {
         model.setState(State.UPDATE_TRIP);
+        view.dispose();
+        view = ViewFactory.createEditView(tripId, this);
+        view.addEventListener(this);
+    }
+    public void viewAllTrips(){
+        model.setState(State.VIEW_ALL_TRIPS);
+        view.dispose();
         view = view.getNewView();
-        view.setTripId();
         view.addEventListener(this);
     }
     public void openReport(){
@@ -280,4 +283,11 @@ public class Controller {
     }
 
 
+    public String[] getTripInfo(int tripId) {
+        return model.getTripInfo(tripId);
+    }
+
+    public ResultSet getAllTrips() {
+        return new DataBase().getAllTrips();
+    }
 }

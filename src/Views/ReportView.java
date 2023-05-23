@@ -1,9 +1,8 @@
 package Views;
 
 import javax.swing.*;
-import Controllers.Controller;
 
-public class reportView extends View {
+public class ReportView extends View {
     private JPanel panel1;
     private JLabel totalTrains;
     private JLabel totalTrips;
@@ -12,7 +11,7 @@ public class reportView extends View {
     private JLabel averageTicket;
     private JLabel revenue;
 
-    public reportView() {
+    public ReportView() {
         super();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {

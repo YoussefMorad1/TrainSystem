@@ -49,6 +49,18 @@ public class DataBase {
         }
         return null;
     }
+    public ResultSet getAllTrips(){
+        ResultSet ans;
+        String query = "select * from trips".formatted();
+        try {
+            Statement sttmnt = connection.createStatement();
+            ans = sttmnt.executeQuery(query);
+//             closeConnection();
+            return ans;
+        } catch (Exception exception) {
+        }
+        return null;
+    }
 
     public boolean register(String name, String userName, String password, int age, String address) {
         String query = "insert into customers (name,userName,password,age,address) values ('%s','%s','%s',%d,'%s')".formatted(name, userName, password, age, address);
@@ -320,6 +332,19 @@ public class DataBase {
 //    }
     public Connection getConnection() {
         return connection;
+    }
+
+    public ResultSet getTripInfo(int tripId) {
+        String query = "select * from trips where id = %d".formatted(tripId);
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet ans = statement.executeQuery(query);
+//            closeConnection();
+            return ans;
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+        return null;
     }
 
 //    public void closeConnection() {

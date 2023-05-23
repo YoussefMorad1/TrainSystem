@@ -7,7 +7,7 @@ import Controllers.Controller;
 
 
 
-public class addTrainView extends View{
+public class AddTrainView extends View{
     private JPanel panel1;
     private JButton addTrainButton;
     private JTextField seatsNumber;
@@ -15,7 +15,7 @@ public class addTrainView extends View{
     private JButton backButton;
 
 
-    public addTrainView() {
+    public AddTrainView() {
         super();
         super.displayFrame(panel1);
     }

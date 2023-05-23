@@ -2,7 +2,7 @@ package Views;
 
 import javax.swing.*;
 import Controllers.*;
-public class trainUpdateView extends View {
+public class TrainUpdateView extends View {
     private JPanel panel1;
     private JTextField id;
     private JTextField newSeats;
@@ -10,7 +10,7 @@ public class trainUpdateView extends View {
     private JButton updateButton;
     private JButton backButton;
 
-    public trainUpdateView() {
+    public TrainUpdateView() {
         super();
         super.displayFrame(panel1);
     }

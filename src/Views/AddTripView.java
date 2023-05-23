@@ -4,7 +4,7 @@ import javax.swing.*;
 import Controllers.Controller;
 import com.github.lgooddatepicker.components.DateTimePicker;
 
-public class addTripView extends View{
+public class AddTripView extends View{
     private JPanel panel1;
     private JTextField startLocation;
     private JTextField destinatoin;
@@ -15,7 +15,7 @@ public class addTripView extends View{
     private DateTimePicker arrivalTime;
     private JButton backButton;
 
-    public addTripView() {
+    public AddTripView() {
         super();
         super.displayFrame(panel1);
     }
