@@ -8,14 +8,14 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-public class AllTripsView extends View{
+public class allTrainsView extends View{
     private JPanel panel1;
     private JButton backButton;
     private JTextField textField1;
     private JButton editButton;
     private JTable table1;
     private DefaultTableModel tableModel;
-    AllTripsView(Controller controller){
+    allTrainsView(Controller controller){
         super();
         this.controller = controller;
         createUIComponents();
@@ -28,23 +28,19 @@ public class AllTripsView extends View{
                 return false;
             }
         };
-        String[] columns = {"Trip ID", "Start Location", "Destination", "Start Time",
-                "Arrive Time", "Train ID", "Still Available?", "Price"};
+        String[] columns = {"Train ID", "Seats", "Class"};
         for (String str : columns) {
             tableModel.addColumn(str);
         }
 //        tableModel.addRow(columns);
-        ResultSet userTrips = controller.getAllTrips();
+        ResultSet userTrains = controller.getAllTrains();
         try {
-            while (userTrips.next()) {
+            while (userTrains.next()) {
                 Vector<Object> arr = new Vector<>();
-                for (int i = 1; i <= 6; i++) {
-                    if (i == 4) continue;
-                    arr.add(userTrips.getString(i));
+                for (int i = 1; i <= 3; i++) {
+
+                    arr.add(userTrains.getString(i));
                 }
-                arr.add(userTrips.getInt(7) == 1 ? "Yes" : "No");
-                arr.add(userTrips.getInt(8));
-                arr.add(userTrips.getFloat(9));
                 tableModel.addRow(arr);
             }
         } catch (Exception ignored) {
