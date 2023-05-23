@@ -52,17 +52,17 @@ public class Model {
         return false;
     }
 
-    public boolean addTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {
+    public boolean addTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         DataBase db = new DataBase();
-        if (db.addTrip(startLocation, destination, startTime, arrivalTime, trainId)) {
+        if (db.addTrip(startLocation, destination, startTime, arrivalTime, trainId, price)) {
             return true;
         }
         return false;
     }
 
-    public boolean updateTrip(int tripId, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {
+    public boolean updateTrip(int tripId, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         DataBase db = new DataBase();
-        if (db.updateTrip(tripId, startLocation, destination, startTime, arrivalTime, trainId)) {
+        if (db.updateTrip(tripId, startLocation, destination, startTime, arrivalTime, trainId, price)) {
             return true;
         }
         return false;

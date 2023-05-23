@@ -106,12 +106,12 @@ public class Controller {
 
     }
 
-    public void tryAddTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {
+    public void tryAddTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         if (startLocation.isEmpty() || destination.isEmpty() || startTime == null || arrivalTime == null) {
             view.showError("Please fill all the fields");
             return;
         }
-        if (model.addTrip(startLocation, destination, startTime, arrivalTime, trainId)) {
+        if (model.addTrip(startLocation, destination, startTime, arrivalTime, trainId, price)) {
             view = view.getNewView();
             view.addEventListener(this);
         } else {
@@ -119,12 +119,12 @@ public class Controller {
         }
     }
 
-    public void tryUpdateTrip(int id, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {
+    public void tryUpdateTrip(int id, String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
         if (startLocation.isEmpty() || destination.isEmpty() || startTime == null || arrivalTime == null || trainId == 0) {
             view.showError("Please fill all the fields");
             return;
         }
-        if (model.updateTrip(id, startLocation, destination, startTime, arrivalTime, trainId)) {
+        if (model.updateTrip(id, startLocation, destination, startTime, arrivalTime, trainId, price)) {
             view = view.getNewView();
             view.addEventListener(this);
         }

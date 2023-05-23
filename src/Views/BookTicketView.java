@@ -35,7 +35,8 @@ public class BookTicketView extends View {
         super.addEventListener(controller);
         searchButton.addActionListener(e -> displayTrips());
         bookButton.addActionListener(e -> {
-            if (!tripsIds.contains(Integer.parseInt(idField.getText())) || !idField.getText().chars().allMatch(Character::isDigit)) {
+            if (!tripsIds.contains(Integer.parseInt(idField.getText())) ||
+                    !idField.getText().chars().allMatch(Character::isDigit)) {
                 showError("Wrong Trip ID");
                 return;
             }
@@ -74,8 +75,8 @@ public class BookTicketView extends View {
             tableModel.setRowCount(0);
             tableModel.setColumnCount(0);
         }
-        String[] columns = {"id", "startLocation", "destination",
-                "availableSeats", "startTime", "arriveTime", "trainId", "class"};
+        String[] columns = {"ID", "Start Location", "Destination",
+                "Available Seats", "Start Time", "Arrive Time", "Train ID", "Class", "Price"};
         for (String str : columns) {
             tableModel.addColumn(str);
         }
@@ -88,7 +89,8 @@ public class BookTicketView extends View {
                     if (i == 7) continue; // if 'available' column continue
                     arr.add(trips.getString(i));
                 }
-                arr.add(trips.getInt(9) == 1 ? "First" : trips.getInt(9) == 2 ? "Second" : "Third");
+                arr.add(trips.getInt(10) == 1 ? "First" : trips.getInt(9) == 2 ? "Second" : "Third");
+                arr.add(trips.getString(9));
                 tableModel.addRow(arr);
             }
         } catch (Exception ignored) {
