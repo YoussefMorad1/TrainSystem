@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.allTrainsView">
+  <grid id="27dc6" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="d4b22" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="d0703" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="empty">
+              <size top="5" left="5" bottom="5" right="5"/>
+            </border>
+            <children>
+              <grid id="61786" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="South"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="732e0" class="javax.swing.JButton" binding="backButton" default-binding="true">
+                    <constraints border-constraint="West"/>
+                    <properties>
+                      <background color="-65536"/>
+                      <focusable value="false"/>
+                      <text value="Back"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="bfa8" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="8c574" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="South"/>
+                    <properties/>
+                    <border type="empty">
+                      <size top="0" left="0" bottom="8" right="0"/>
+                    </border>
+                    <children>
+                      <component id="15f93" class="javax.swing.JLabel">
+                        <constraints border-constraint="West"/>
+                        <properties>
+                          <focusable value="false"/>
+                          <font size="16"/>
+                          <text value="Trip ID "/>
+                        </properties>
+                      </component>
+                      <grid id="5b9c9" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="empty">
+                          <size top="0" left="8" bottom="0" right="0"/>
+                        </border>
+                        <children>
+                          <component id="e84a6" class="javax.swing.JTextField" binding="textField1">
+                            <constraints border-constraint="West"/>
+                            <properties>
+                              <margin top="2" left="6" bottom="2" right="6"/>
+                              <minimumSize width="109" height="30"/>
+                              <preferredSize width="90" height="20"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                          <grid id="38e02" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                            <border type="empty">
+                              <size top="0" left="5" bottom="0" right="0"/>
+                            </border>
+                            <children>
+                              <component id="5e8a2" class="javax.swing.JButton" binding="editButton">
+                                <constraints border-constraint="West"/>
+                                <properties>
+                                  <background color="-14294016"/>
+                                  <focusable value="false"/>
+                                  <font size="14"/>
+                                  <text value="Edit"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <scrollpane id="30cc3">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <preferredSize width="900" height="300"/>
+                    </properties>
+                    <border type="empty">
+                      <size top="0" left="0" bottom="5" right="0"/>
+                    </border>
+                    <children>
+                      <component id="659e7" class="javax.swing.JTable" binding="table1" custom-create="true" default-binding="true">
+                        <constraints/>
+                        <properties>
+                          <autoResizeMode value="4"/>
+                          <font size="14"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

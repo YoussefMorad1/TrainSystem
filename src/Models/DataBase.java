@@ -13,8 +13,7 @@ public class DataBase {
 
     public DataBase() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
-                    "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
+            connection = DriverManager.getConnection("jdbc:sqlite:src\\Models\\trainSystem.db");
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
@@ -55,7 +54,19 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             ans = sttmnt.executeQuery(query);
-//             closeConnection();
+           //  closeConnection();
+            return ans;
+        } catch (Exception exception) {
+        }
+        return null;
+    }
+    public ResultSet getAllTrains(){
+        ResultSet ans;
+        String query = "select * from trains".formatted();
+        try {
+            Statement sttmnt = connection.createStatement();
+            ans = sttmnt.executeQuery(query);
+             closeConnection();
             return ans;
         } catch (Exception exception) {
         }
@@ -67,7 +78,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-//             closeConnection();
+             closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -80,7 +91,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-//            closeConnection();
+            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -93,7 +104,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-//            closeConnection();
+            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -150,6 +161,30 @@ public class DataBase {
             System.out.println(exception.getMessage());
         }
         return false;
+    }
+    public ResultSet getTripInfo(int tripId) {
+        String query = "select * from trips where id = %d".formatted(tripId);
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet ans = statement.executeQuery(query);
+//            closeConnection();
+            return ans;
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+        return null;
+    }
+    public ResultSet getTrainInfo(int trainId) {
+        String query = "select * from trains where id = %d".formatted(trainId);
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet ans = statement.executeQuery(query);
+//            closeConnection();
+            return ans;
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+        return null;
     }
 
     public boolean bookTkt(String userName, int tripId) {
@@ -324,32 +359,21 @@ public class DataBase {
 //    }
 
 
-//    public void closeConnection() {
-//        try {
-//            if (connection != null) {
-//                connection.close();
-//            }
-//        } catch (SQLException e) {
-//
-//            e.printStackTrace();
-//        }
-//    }
+    public void closeConnection() {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+    }
     public Connection getConnection() {
         return connection;
     }
 
-    public ResultSet getTripInfo(int tripId) {
-        String query = "select * from trips where id = %d".formatted(tripId);
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet ans = statement.executeQuery(query);
-//            closeConnection();
-            return ans;
-        } catch (Exception exception) {
-            System.out.println(exception);
-        }
-        return null;
-    }
+
 
     public boolean isValidTrainId(int trainId) {
         String query = "select * from trains where id = %d".formatted(trainId);

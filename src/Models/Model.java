@@ -120,4 +120,20 @@ public class Model {
         DataBase db = new DataBase();
         return db.isValidTrainId(trainId);
     }
+    public String[] getTrainInfo(int trainId) {
+        DataBase db = new DataBase();
+        ResultSet ans = db.getTrainInfo(trainId);
+        String[] arr = new String[3];
+        try {
+            ans.next();
+            for(int i = 1; i <= 3; i++){
+                arr[i-1] = ans.getString(i);
+            }
+            return arr;
+        }
+        catch (Exception exception){
+            System.out.println(exception);
+        }
+        return null;
+    }
 }

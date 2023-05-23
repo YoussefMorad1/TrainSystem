@@ -246,6 +246,12 @@ public class Controller {
         view = view.getNewView();
         view.addEventListener(this);
     }
+    public void viewAllTrains(){
+        model.setState(State.VIEW_ALL_TRAINS);
+        view.dispose();
+        view = view.getNewView();
+        view.addEventListener(this);
+    }
     public void openReport(){
         model.setState(State.REPORT);
         view = view.getNewView();
@@ -333,8 +339,14 @@ public class Controller {
     public String[] getTripInfo(int tripId) {
         return model.getTripInfo(tripId);
     }
+    public String[] getTrainInfo(int trainId) {
+        return model.getTrainInfo(trainId);
+    }
 
     public ResultSet getAllTrips() {
         return new DataBase().getAllTrips();
+    }
+    public ResultSet getAllTrains() {
+        return new DataBase().getAllTrains();
     }
 }

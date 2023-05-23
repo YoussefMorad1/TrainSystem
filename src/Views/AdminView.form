@@ -21,7 +21,7 @@
           <component id="5914f" class="javax.swing.JButton" binding="trainUpdatebutton">
             <constraints border-constraint="North"/>
             <properties>
-              <text value="Update a train's details"/>
+              <text value="View all trains"/>
             </properties>
           </component>
           <grid id="af80b" layout-manager="BorderLayout" hgap="0" vgap="0">

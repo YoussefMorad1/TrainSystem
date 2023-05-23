@@ -30,10 +30,7 @@ public class ViewFactory {
         {
             view = new AddTrainView();
         }
-        else if(type == State.UPDATE_TRAIN)
-        {
-            view = new TrainUpdateView();
-        }
+
         else if(type == State.ADD_TRIP)
         {
             view = new AddTripView();
@@ -48,6 +45,9 @@ public class ViewFactory {
         else if(type == State.VIEW_ALL_TRIPS){
             view = new AllTripsView(controller);
         }
+        else if(type == State.VIEW_ALL_TRAINS){
+            view = new allTrainsView(controller);
+        }
 
         return view;
     }
@@ -57,7 +57,7 @@ public class ViewFactory {
         if(type == State.UPDATE_TRIP)
             view = new UpdateTripView(id, controller);
         else if(type == State.UPDATE_TRAIN)
-            ;//view = new UpdateTrainView(id, controller);
+            view = new TrainUpdateView(id, controller);
         return view;
     }
 }
