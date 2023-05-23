@@ -192,9 +192,10 @@ public class Controller {
         view.addEventListener(this);
     }
 
-    public void openUpdateTrip() {
+    public void openUpdateTrip(int tripId) {
         model.setState(State.UPDATE_TRIP);
         view = view.getNewView();
+        view.setTripId();
         view.addEventListener(this);
     }
     public void openReport(){
