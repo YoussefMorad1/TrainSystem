@@ -56,7 +56,7 @@ public class AllTripsView extends View{
         super.addEventListener(controller);
         editButton.addActionListener(e -> {
                     if (!textField1.getText().chars().allMatch(Character::isDigit)) {
-                        this.showError("Wrong Trip Id");
+                        this.showMessage("Wrong Trip Id");
                         return;
                     }
                     controller.openUpdateTrip(Integer.parseInt(textField1.getText()));

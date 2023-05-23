@@ -115,4 +115,9 @@ public class Model {
         }
         return null;
     }
+
+    public boolean isValidTrainId(int trainId) {
+        DataBase db = new DataBase();
+        return db.isValidTrainId(trainId);
+    }
 }

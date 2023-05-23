@@ -152,7 +152,7 @@ public class DataBase {
         return false;
     }
 
-    public void bookTkt(String userName, int tripId) {
+    public boolean bookTkt(String userName, int tripId) {
         // get available seats
         String seatIdQuery = "select availableSeats from trips where id = %d".formatted(tripId);
         int availableSeats = -1;
@@ -165,6 +165,7 @@ public class DataBase {
             }
         } catch (Exception exception) {
             System.out.println(exception);
+            return false;
         }
         // insert ticket
         String insertTktQuery = "insert into tickets values(%d, '%s', %d, %d)".formatted(tripId, userName, 150, availableSeats);
@@ -174,6 +175,7 @@ public class DataBase {
 
         } catch (Exception exception) {
             System.out.println(exception);
+            return false;
         }
         // update available seats
         String updateAvailableSeatsQuery = "update trips set availableSeats = %d where id = %d".formatted(availableSeats - 1, tripId);
@@ -183,7 +185,9 @@ public class DataBase {
 //            closeConnection();
         } catch (Exception exception) {
             System.out.println(exception);
+            return false;
         }
+        return true;
     }
 
     public void deleteTicket(int ticketId, String username) {
@@ -345,6 +349,21 @@ public class DataBase {
             System.out.println(exception);
         }
         return null;
+    }
+
+    public boolean isValidTrainId(int trainId) {
+        String query = "select * from trains where id = %d".formatted(trainId);
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet ans = statement.executeQuery(query);
+            if (ans.next()) {
+                return true;
+            }
+        } catch (Exception exception) {
+            System.out.println(exception);
+            return false;
+        }
+        return false;
     }
 
 //    public void closeConnection() {

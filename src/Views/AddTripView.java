@@ -25,7 +25,7 @@ public class AddTripView extends View{
         addButton.addActionListener(e -> controller.tryAddTrip(
                     startLocation.getText(), destinatoin.getText(),
                     startTime.getDateTimePermissive(), arrivalTime.getDateTimePermissive(),
-                    Integer.parseInt(trainId.getText()), Float.parseFloat(priceField.getText())
+                    trainId.getText(), priceField.getText()
                 )
         );
         backButton.addActionListener(e -> controller.goBack());

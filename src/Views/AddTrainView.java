@@ -29,7 +29,7 @@ public class AddTrainView extends View{
         // get the selected radio button
 
         addTrainButton.addActionListener(e -> controller.tryAddTrain(
-                    Integer.parseInt(seatsNumber.getText()),
+                    seatsNumber.getText(),
                 radioButton1.isSelected() ? 1 : radioButton2.isSelected() ? 2 : 3
                 )
         );

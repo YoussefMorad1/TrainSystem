@@ -23,7 +23,7 @@ public class RegisterView extends View {
     @Override
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
-        registerButton.addActionListener(e -> controller.tryRegister(nameField.getText(),userNameField.getText(), new String(passwordField.getPassword()), Integer.parseInt(ageField.getText()), adressField.getText()));
+        registerButton.addActionListener(e -> controller.tryRegister(nameField.getText(),userNameField.getText(), new String(passwordField.getPassword()), ageField.getText(), adressField.getText()));
         backButton.addActionListener(e->controller.goBack());
     }
 }

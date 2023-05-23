@@ -3,6 +3,7 @@ package Controllers;
 import Models.DataBase;
 import Models.Model;
 import Views.View;
+import Views.ViewFactory;
 
 
 import java.sql.ResultSet;
@@ -63,12 +64,20 @@ public class Controller {
         }
     }
 
-    public void tryRegister(String name, String userName, String password, int age, String address) {
-        if (name.isEmpty() || userName.isEmpty() || password.isEmpty() || age == 0 || address.isEmpty()) {
+    public void tryRegister(String name, String userName, String password, String ageString, String address) {
+        int age = 0;
+        try {
+            age = Integer.parseInt(ageString);
+        } catch (Exception e) {
+            view.showMessage("Please enter a valid age");
+            return;
+        }
+        if (name.isEmpty() || userName.isEmpty() || password.isEmpty() || age <= 0 || address.isEmpty()) {
             view.showMessage("Please fill all the fields");
             return;
         }
         if (model.register(name, userName, password, age, address)) {
+            view.showMessage("Registered Successfully");
             view = view.getNewView();
             view.addEventListener(this);
         } else {
@@ -93,39 +102,75 @@ public class Controller {
         return info;
     }
 
-    public void tryAddTrain(int seats, int classNumber) {
-        if (seats == 0 || classNumber == 0) {
-            view.showMessage("Please fill all the fields");
+    public void tryAddTrain(String seatsString, int classNumber) {
+        int seats = 0;
+        try {
+            seats = Integer.parseInt(seatsString);
+        } catch (Exception e) {
+            view.showMessage("Please enter a valid number of seats");
             return;
-        } else if (classNumber > 3 || classNumber < 1) {
-            view.showMessage("Class number must be between 1 and 3");
+        }
+        if (seats <= 0) {
+            view.showMessage("Please enter a valid number of seats");
             return;
         }
         if (model.addTrain(seats, classNumber)) {
+            view.showMessage("Train added successfully");
             view = view.getNewView();
             view.addEventListener(this);
         }
-
     }
 
-    public void tryUpdateTrain(int id, int seats, int classNumber) {
-        if (seats == 0 || classNumber == 0) {
-            view.showMessage("Please fill all the fields");
+    public void tryUpdateTrain(int id, String seatsString, int classNumber) {
+        int seats = 0;
+        try {
+            seats = Integer.parseInt(seatsString);
+        } catch (Exception e) {
+            view.showMessage("Please enter a valid number of seats");
+            return;
+        }
+        if (seats <= 0) {
+            view.showMessage("Please enter a valid number of seats");
             return;
         }
         if (model.updateTrain(id, seats, classNumber)) {
+            view.showMessage("Train updated successfully");
             view = view.getNewView();
             view.addEventListener(this);
         }
 
     }
 
-    public void tryAddTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId, float price) {
+    public void tryAddTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime,
+                           String trainIdString, String priceString) {
+        float price = 0;
+        try {
+            price = Float.parseFloat(priceString);
+            if (price <= 0) {
+                view.showMessage("Please enter a valid price");
+                return;
+            }
+        } catch (Exception e) {
+            view.showMessage("Please enter a valid price");
+            return;
+        }
+        int trainId = 0;
+        try {
+            trainId = Integer.parseInt(trainIdString);
+        } catch (Exception e) {
+            view.showMessage("Please enter a valid train ID");
+            return;
+        }
+        if(!model.isValidTrainId(trainId)){
+            view.showMessage("Please enter a valid train ID");
+            return;
+        }
         if (startLocation.isEmpty() || destination.isEmpty() || startTime == null || arrivalTime == null) {
             view.showMessage("Please fill all the fields");
             return;
         }
         if (model.addTrip(startLocation, destination, startTime, arrivalTime, trainId, price)) {
+            view.showMessage("Trip added successfully");
             view = view.getNewView();
             view.addEventListener(this);
         } else {
@@ -139,6 +184,7 @@ public class Controller {
             return;
         }
         if (model.updateTrip(id, startLocation, destination, startTime, arrivalTime, trainId, price)) {
+            view.showMessage("Trip updated successfully");
             model.setState(State.VIEW_ALL_TRIPS);
             view = view.getNewView();
             view.addEventListener(this);
@@ -153,21 +199,16 @@ public class Controller {
             view.showMessage("Please enter a valid age");
             return;
         }
-        if (name.isEmpty() || userName.isEmpty() || password.isEmpty() || age == 0 || address.isEmpty()) {
+        if (name.isEmpty() || userName.isEmpty() || password.isEmpty() || age <= 0 || address.isEmpty()) {
             view.showMessage("Please fill all the fields");
             return;
         }
         if (model.editProfile(userName, name, password, age, address)) {
+            view.showMessage("Profile updated successfully");
             view = view.getNewView();
             view.addEventListener(this);
-            // show success message
-            view.showMessage("Profile updated successfully");
         }
     }
-
-
-
-
 
     public void openRegister() {
         model.setState(State.REGISTER);
@@ -221,9 +262,14 @@ public class Controller {
 
     public void bookTkt(int tripId) {
         DataBase db = new DataBase();
-        db.bookTkt(getModel().getUserName(), tripId);
-        view = view.getNewView();
-        view.addEventListener(this);
+        if(db.bookTkt(getModel().getUserName(), tripId)) {
+            view.showMessage("Ticket booked successfully");
+            view = view.getNewView();
+            view.addEventListener(this);
+        }
+        else{
+            view.showMessage("You already have a ticket for this trip");
+        }
     }
     public void goBack(){
         State curState = model.getCurrentState(), newState = State.LOGIN;

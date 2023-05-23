@@ -17,7 +17,7 @@ public class TrainUpdateView extends View {
 
     public void addEventListener(Controller controller) {
         super.addEventListener(controller);
-        updateButton.addActionListener(e -> controller.tryUpdateTrain(Integer.parseInt(id.getText()), Integer.parseInt(newSeats.getText()),Integer.parseInt(newClass.getText())));
+        updateButton.addActionListener(e -> controller.tryUpdateTrain(Integer.parseInt(id.getText()), newSeats.getText(),Integer.parseInt(newClass.getText())));
         backButton.addActionListener(e->controller.goBack());
     }
 }
