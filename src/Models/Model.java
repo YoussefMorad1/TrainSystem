@@ -2,7 +2,7 @@ package Models;
 
 import Controllers.State;
 
-import java.lang.reflect.Array;
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -27,7 +27,10 @@ public class Model {
         }
         return false;
     }
-
+    public ResultSet getUserInfo(){
+        DataBase db = new DataBase();
+        return db.getUserInfo(userName);
+    }
     public boolean register(String name, String userName, String password, int age, String address) {
         DataBase db = new DataBase();
         if (db.register(name, userName, password, age, address)) {
@@ -50,6 +53,11 @@ public class Model {
             return true;
         }
         return false;
+    }
+
+    public boolean editProfile(String name, String userName, String password, int age, String address){
+        DataBase db = new DataBase();
+        return db.editProfile(userName, name, password, age, address);
     }
 
     public boolean addTrip(String startLocation, String destination, LocalDateTime startTime, LocalDateTime arrivalTime, int trainId) {

@@ -7,8 +7,10 @@ import Views.ViewFactory;
 
 
 import javax.swing.*;
+import javax.xml.transform.Result;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 
 public class Controller {
@@ -79,6 +81,23 @@ public class Controller {
         }
     }
 
+
+    public String[] getUserInfo() {
+        ResultSet rs = model.getUserInfo();
+        String[] info = new String[5];
+        try {
+            rs.next();
+            info[0] = rs.getString("name");
+            info[1] = rs.getString("userName");
+            info[2] = rs.getString("password");
+            info[3] = rs.getString("age");
+            info[4] = rs.getString("address");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return info;
+    }
+
     public void tryAddTrain(int seats, int classNumber) {
         if (seats == 0 || classNumber == 0) {
             view.showError("Please fill all the fields");
@@ -129,6 +148,28 @@ public class Controller {
             view.addEventListener(this);
         }
     }
+
+    public void editProfile(String userName, String name, String password, String ageString, String address) {
+        int age = 0;
+        try {
+            age = Integer.parseInt(ageString);
+        } catch (Exception e) {
+            view.showError("Please enter a valid age");
+            return;
+        }
+        if (name.isEmpty() || userName.isEmpty() || password.isEmpty() || age == 0 || address.isEmpty()) {
+            view.showError("Please fill all the fields");
+            return;
+        }
+        if (model.editProfile(userName, name, password, age, address)) {
+            view = view.getNewView();
+            view.addEventListener(this);
+        }
+    }
+
+
+
+
 
     public void openRegister() {
         model.setState(State.REGISTER);
@@ -185,7 +226,7 @@ public class Controller {
             newState = State.ADMIN_HOME;
         else if(curState == State.ADMIN_HOME || curState == State.USER_HOME || curState == State.REGISTER)
             model.logout();
-        else if(curState == State.BOOK_TKT || curState == State.DELETE_TKT)
+        else if(curState == State.BOOK_TKT || curState == State.DELETE_TKT || curState == State.EDIT_INFO)
             newState = State.USER_HOME;
         else if(curState == State.LOGIN){
             view.dispose();

@@ -13,8 +13,10 @@ public class DataBase {
 
     public DataBase() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:src\\Models\\trainSystem.db");
+                connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
+                        "databaseName=TrainSystem;integratedSecurity=true;encrypt=false;");
         } catch (Exception exception) {
+            System.out.println(exception.getMessage());
         }
     }
 
@@ -28,7 +30,6 @@ public class DataBase {
         try {
             Statement st = connection.createStatement();
             ans = st.executeQuery(query);
-            closeConnection();
             return ans.next();
         } catch (Exception exception) {
         }
@@ -41,7 +42,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             ans = sttmnt.executeQuery(query);
-             closeConnection();
+//             closeConnection();
             return ans;
         } catch (Exception exception) {
         }
@@ -53,7 +54,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-             closeConnection();
+//             closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -61,12 +62,13 @@ public class DataBase {
         return false;
     }
 
+
     public boolean addTrain(int seats, int classNumber) {
         String query = "insert into trains (seats,class) values (%d,%d)".formatted(seats, classNumber);
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+//            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -79,7 +81,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
+//            closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -98,7 +100,7 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-             closeConnection();
+//             closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -111,7 +113,7 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             ResultSet seatsResultSet = statement.executeQuery(availableSeatsQuery);
-            closeConnection();
+//            closeConnection();
             if (seatsResultSet.next()) {
                 availableSeats = seatsResultSet.getInt(1);
             }
@@ -130,7 +132,6 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-             closeConnection();
             return true;
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
@@ -166,7 +167,6 @@ public class DataBase {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(updateAvailableSeatsQuery);
-            closeConnection();
         } catch (Exception exception) {
             System.out.println(exception);
         }
@@ -177,7 +177,6 @@ public class DataBase {
         try {
             Statement sttmnt = connection.createStatement();
             sttmnt.executeUpdate(query);
-            closeConnection();
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
@@ -211,6 +210,32 @@ public class DataBase {
             System.out.println(exception.getMessage());
         }
         return null;
+    }
+
+    public ResultSet getUserInfo(String username) {
+        ResultSet ans;
+        String query = "select * from customers where userName = '%s'".formatted(username);
+        try {
+            Statement statement = connection.createStatement();
+            ans = statement.executeQuery(query);
+            return ans;
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+        return null;
+    }
+
+    public boolean editProfile(String username, String name, String password, int age, String address) {
+        String query = "update customers set name = '%s', password = '%s', age = %d, address = '%s' where userName = '%s'"
+                .formatted(name, password, age, address, username);
+        try {
+            Statement sttmnt = connection.createStatement();
+            sttmnt.executeUpdate(query);
+            return true;
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+        return false;
     }
     public int getTotalTrains()
     {
@@ -292,14 +317,4 @@ public class DataBase {
         return connection;
     }
 
-    public void closeConnection() {
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        }
-    }
 }

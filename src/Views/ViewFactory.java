@@ -1,17 +1,17 @@
 package Views;
 
 import Controllers.Controller;
-import Models.Model;
 import Controllers.State;
-
-import java.lang.module.Configuration;
 
 public class ViewFactory {
     public static View createView(Controller controller) {
         State type = controller.getModel().getCurrentState();
         View view = null;
         if (type == State.LOGIN) {
-             view = new LoginView();
+            view = new LoginView();
+        }
+        else if(type == State.EDIT_INFO){
+            view = new EditProfileView(controller);
         }
         else if(type == State.USER_HOME){
             view = new UserHomeView();
